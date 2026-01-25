@@ -54,12 +54,55 @@ function setup() {
         for (let c = 0; c < 10; c++) {
 
             let returnedDiv = customNewBoxCreate(newGrid);
-            returnedDiv.style.left = gridSize * r;
-            returnedDiv.style.top = gridSize * c;
+            returnedDiv.style.top = gridSize * r + "px";
+            returnedDiv.style.left = gridSize * c + "px";
+
+            if ((r % 2) == 0) {
+                returnedDiv.style.backgroundColor = "white"
+
+            }
+
+            else {
+
+                returnedDiv.style.backgroundColor = "cornflowerblue"
+            }
         }
     }
 
 
+
+
+    let newGrid2 = document.getElementById("new-grid-three")
+    let gridSize2 = 40
+
+    for (let r = 0; r < 10; r++) {
+        for (let c = 0; c < 10; c++) {
+
+            let returnedDiv = customNewBoxCreate(newGrid2);
+            returnedDiv.style.top = gridSize2 * r + "px";
+            returnedDiv.style.left = gridSize2 * c + "px";
+
+            if ((c % 3) == 0) {
+                returnedDiv.style.backgroundColor = "red"
+                returnedDiv.textContent = "0"
+
+            }
+
+            else if ((c % 3) == 1) {
+
+                returnedDiv.style.backgroundColor = "orange"
+                returnedDiv.textContent = "1"
+            }
+
+            else {
+
+                returnedDiv.style.backgroundColor = "yellow"
+                returnedDiv.textContent = "2"
+            }
+
+
+        }
+    }
 
 
 
