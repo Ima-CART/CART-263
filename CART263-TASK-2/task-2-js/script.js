@@ -173,6 +173,8 @@ function setup() {
        innerContainers[index].style.backgroundColor = color;
        });*/
 
+    /** IMAGE FOR THE CHANGES ARE INSIDE Task-2-screengrab.
+     * The image is called Task 2-MODIFY.png */
 
     /*************************************** */
     /*** END PART TWO MODIFY */
@@ -189,27 +191,27 @@ function setup() {
     /* 1E:  Set the background of this paragraph element to be green */
     /* 1F:  Set the color of the text in this paragraph element to be white */
     /* 1G: Append this new element to the parent variable within the function. */
-    /* 1H: Iterate through the allPTagsThree array and call customCreateElement(), 
+    /* 1H: Iterate through the allPTagsThree array and call customCreateElement(),
     passing the current allPTagsThree element as the parent with each iteration.*/
     /***CODE */
 
 
-    let allPTagsThree = document.getElementsByTagName("p")
-    function customCreateElement(parent) {
-        let newParagraph = document.createElement("p")
-        newParagraph.textContent = "using create Element"
-        newParagraph.style.backgroundColor = "green"
-        newParagraph.style.color = "white"
-        parent.appendChild(newParagraph)
-
-
-
-    }
-
-    for (let i = 0; i < allPTagsThree.length; i++) {
-        customCreateElement(allPTagsThree[i]);
-        i++
-    }
+    /** let allPTagsThree = document.getElementsByTagName("p")
+       function customCreateElement(parent) {
+           let newParagraph = document.createElement("p")
+           newParagraph.textContent = "using create Element"
+           newParagraph.style.backgroundColor = "green"
+           newParagraph.style.color = "white"
+           parent.appendChild(newParagraph)
+   
+   
+   
+       }
+   
+       for (let i = 0; i < allPTagsThree.length; i++) {
+           customCreateElement(allPTagsThree[i]);
+           i++
+       }*/
 
     // console.log(document.getElementsByTagName("p"))
 
@@ -227,16 +229,19 @@ function setup() {
      * 
     */
 
+    /** IMAGE FOR THE CHANGES ARE INSIDE Task-2-screengrab.
+     * The image is called Task 2-CREATE Paragraph.png */
+
     /*************************************** */
     /* 2: GRID OF BOXES */
     /* 2A: Create another new function: function customNewBoxCreate(parent){ //body }*/
-    /* 2B: In the body of customNewBoxCreate create a new div element, that has the class testDiv. 
+    /* 2B: In the body of customNewBoxCreate create a new div element, that has the class testDiv.
     /* 2C:Then append this new element to the parent variable within the function. 
     /* 2D:Finally, return</code> this new element */
-    /* 2E:Create a nested for loop (for rows and columns) to iterate through 10 columns and 10 rows (just like the JS Review :)). 
+    /* 2E:Create a nested for loop (for rows and columns) to iterate through 10 columns and 10 rows (just like the JS Review :)).
     Call the customNewBoxCreate function, in order to generate a new div -> representing each cell in the grid. 
     Ensure that the parent element for each of these new divs is the element whose id is named `new-grid`*/
-    /* 2F: You will see at this point that the x,y position of the resulting divs makes no sense... 
+    /* 2F: You will see at this point that the x,y position of the resulting divs makes no sense...
     Fix this by doing the following: every time you call customNewBoxCreate() - save the current returned element 
     in a variable i.e. returnedDiv. 
     Set the style (left and top) to the of this element to 
@@ -249,7 +254,7 @@ otherwise lat it have the content `ODD`.*/
 
     /***CODE */
 
-    function customNewBoxCreate(parent) {
+    /** function customNewBoxCreate(parent) {
         let newDiv = document.createElement("div");
         newDiv.classList.add("testDiv");
         parent.appendChild(newDiv);
@@ -277,7 +282,7 @@ otherwise lat it have the content `ODD`.*/
                 returnedDiv.style.backgroundColor = "cornflowerblue"
             }
         }
-    }
+    }*/
 
     /***EXPLANATION::
      * Following the instruction of the task. A new function was created in order to build the grid. 
@@ -301,24 +306,27 @@ otherwise lat it have the content `ODD`.*/
      * 
     */
 
+    /** IMAGE FOR THE CHANGES ARE INSIDE Task-2-screengrab.
+     * The image is called Task 2-CREATE GRID.png */
+
     /*************************************** */
     /* 3: GRID OF BOXES II */
 
-    /* 3A: Create ANOTHER nested for loop - in order to generate a new grid ... 
+    /* 3A: Create ANOTHER nested for loop - in order to generate a new grid ...
     USE the same customNewBoxCreate function..., the only difference is that the parent element 
     for each of these new divs is the element whose id is `new-grid-three`. */
-    /* 3B: Then: write the code to check when a column is a multiple of 3 (no remainder), 
+    /* 3B: Then: write the code to check when a column is a multiple of 3 (no remainder),
     when it is a column where the remainder is 1 or when the remainder is 2 ... 
     HINT:: look up the % operator.. */
-    /* 3C: Then for each of the above cases: give the new divs in the first case a background of red, 
+    /* 3C: Then for each of the above cases: give the new divs in the first case a background of red,
     then the second a background of orange and the third yellow. */
-    /*  3D: Finally, let each div contain the text content representing the associated remainder 
+    /*  3D: Finally, let each div contain the text content representing the associated remainder
     when dividing by three. */
 
     /***CODE */
 
 
-    let newGrid2 = document.getElementById("new-grid-three")
+    /**let newGrid2 = document.getElementById("new-grid-three")
     let gridSize2 = 40
 
     for (let r = 0; r < 10; r++) {
@@ -348,7 +356,7 @@ otherwise lat it have the content `ODD`.*/
 
 
         }
-    }
+    } */
 
 
 
@@ -362,6 +370,9 @@ otherwise lat it have the content `ODD`.*/
      * textcontent will say two as it is the last one  remaining number. 
      * 
     */
+
+    /** IMAGE FOR THE CHANGES ARE INSIDE Task-2-screengrab.
+     * The image is called Task 2-BONUS.png */
 
     /*************************************** */
     /*** END PART THREE CREATE */
