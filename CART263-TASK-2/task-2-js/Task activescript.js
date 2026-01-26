@@ -326,7 +326,7 @@ otherwise lat it have the content `ODD`.*/
     /***CODE */
 
 
-    /**let newGrid2 = document.getElementById("new-grid-three")
+    let newGrid2 = document.getElementById("new-grid-three")
     let gridSize2 = 40
 
     for (let r = 0; r < 10; r++) {
@@ -356,7 +356,7 @@ otherwise lat it have the content `ODD`.*/
 
 
         }
-    } */
+    }
 
 
 
