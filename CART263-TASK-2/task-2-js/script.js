@@ -7,102 +7,6 @@ function setup() {
 
 
 
-    //Is there a shorter way to change all the images in a single container????
-
-
-
-
-    let allPTagsThree = document.getElementsByTagName("p")
-    function customCreateElement(parent) {
-        let newParagraph = document.createElement("p")
-        newParagraph.textContent = "using create Element"
-        newParagraph.style.backgroundColor = "green"
-        newParagraph.style.color = "white"
-        parent.appendChild(newParagraph)
-
-
-
-    }
-
-
-    // for (let p of allPTagsThree) {
-    //     customCreateElement(p);
-    // }
-
-    for (let i = 0; i < allPTagsThree.length; i++) {
-        customCreateElement(allPTagsThree[i]);
-        i++
-    }
-
-    console.log(document.getElementsByTagName("p"))
-    // console.log(document.getElementById("1"))
-
-
-
-    function customNewBoxCreate(parent) {
-        let newDiv = document.createElement("div");
-        newDiv.classList.add("testDiv");
-        parent.appendChild(newDiv);
-        return newDiv;
-    }
-
-
-    let newGrid = document.getElementById("new-grid")
-    let gridSize = 40
-
-    for (let r = 0; r < 10; r++) {
-        for (let c = 0; c < 10; c++) {
-
-            let returnedDiv = customNewBoxCreate(newGrid);
-            returnedDiv.style.top = gridSize * r + "px";
-            returnedDiv.style.left = gridSize * c + "px";
-
-            if ((r % 2) == 0) {
-                returnedDiv.style.backgroundColor = "white"
-
-            }
-
-            else {
-
-                returnedDiv.style.backgroundColor = "cornflowerblue"
-            }
-        }
-    }
-
-
-
-
-    let newGrid2 = document.getElementById("new-grid-three")
-    let gridSize2 = 40
-
-    for (let r = 0; r < 10; r++) {
-        for (let c = 0; c < 10; c++) {
-
-            let returnedDiv = customNewBoxCreate(newGrid2);
-            returnedDiv.style.top = gridSize2 * r + "px";
-            returnedDiv.style.left = gridSize2 * c + "px";
-
-            if ((c % 3) == 0) {
-                returnedDiv.style.backgroundColor = "red"
-                returnedDiv.textContent = "0"
-
-            }
-
-            else if ((c % 3) == 1) {
-
-                returnedDiv.style.backgroundColor = "orange"
-                returnedDiv.textContent = "1"
-            }
-
-            else {
-
-                returnedDiv.style.backgroundColor = "yellow"
-                returnedDiv.textContent = "2"
-            }
-
-
-        }
-    }
 
 
 
@@ -111,7 +15,14 @@ function setup() {
 
 
 
-    // console.log(document.querySelectorAll(".content-container"))
+
+
+
+
+
+
+
+
 
 
     /*** ALL ANWSERS TO BE ADDED IN THE ALLOCATED SPACE */
@@ -164,14 +75,14 @@ function setup() {
      
      5C: const h2Element = document.querySelector('h2');
      if (h2Element) {
-       console.log(h2Element.textContent);
-       } 
-       
-       const h2Element = document.querySelector('h2');
-       const textContent = h2Element.textContent
-       console.log(textContent)
-       * 
-       */
+        console.log(h2Element.textContent);
+        } 
+        
+        const h2Element = document.querySelector('h2');
+        const textContent = h2Element.textContent
+        console.log(textContent)
+        * 
+        */
 
 
     /*************************************** */
@@ -179,7 +90,7 @@ function setup() {
     /***CODE */
     /***OUTPUT: console.log(document.getElementById("parent"))
      * The console log that select the element with the id parent. 
-     */
+    */
 
 
     /*************************************** */
@@ -193,7 +104,7 @@ function setup() {
     /***CODE */
 
     /** let text = document.getElementById("1").textContent
-        document.getElementById("1").innerHTML = "Ima Williams January 20th 2026" */
+     document.getElementById("1").innerHTML = "Ima Williams January 20th 2026" */
 
     /*************************************** */
 
@@ -202,7 +113,7 @@ function setup() {
     /***CODE  */
 
     /** document.querySelectorAll(".content-container")[0].style.background = "orange"
-        document.querySelectorAll(".content-container")[1].style.background = "purple" */
+     document.querySelectorAll(".content-container")[1].style.background = "purple" */
 
 
     /*************************************** */
@@ -210,8 +121,8 @@ function setup() {
     /***CODE */
 
     /** document.querySelectorAll("img")[0].src = "task-2-images/seven.png"
-        document.querySelectorAll("img")[1].src = "task-2-images/seven.png"
-        document.querySelectorAll("img")[2].src = "task-2-images/seven.png" */
+     document.querySelectorAll("img")[1].src = "task-2-images/seven.png"
+     document.querySelectorAll("img")[2].src = "task-2-images/seven.png" */
 
 
     /*************************************** */
@@ -235,10 +146,10 @@ function setup() {
     /***CODE  */
 
     /* let paragraph = document.getElementById("5")
-       let newImage = document.createElement("img")
-       newImage.src = "task-2-images/one.png"
-       paragraph.appendChild(newImage)
-       document.getElementById("5").classList.add("newStyle")*/
+    let newImage = document.createElement("img")
+    newImage.src = "task-2-images/one.png"
+    paragraph.appendChild(newImage)
+    document.getElementById("5").classList.add("newStyle")*/
 
 
 
@@ -259,8 +170,8 @@ function setup() {
     innerContainers[3].style.backgroundColor = colors[3];
     
     colors.forEach((color, index) => {
-    innerContainers[index].style.backgroundColor = color;
-    });*/
+       innerContainers[index].style.backgroundColor = color;
+       });*/
 
 
     /*************************************** */
@@ -283,10 +194,38 @@ function setup() {
     /***CODE */
 
 
+    let allPTagsThree = document.getElementsByTagName("p")
+    function customCreateElement(parent) {
+        let newParagraph = document.createElement("p")
+        newParagraph.textContent = "using create Element"
+        newParagraph.style.backgroundColor = "green"
+        newParagraph.style.color = "white"
+        parent.appendChild(newParagraph)
+
+
+
+    }
+
+    for (let i = 0; i < allPTagsThree.length; i++) {
+        customCreateElement(allPTagsThree[i]);
+        i++
+    }
+
+    // console.log(document.getElementsByTagName("p"))
+
+
     /***EXPLANATION::
+     * The result of this function has selected all the <p> tag elements across the html and creates a new elements.
+     * I then created a new variable that would created another "P" element within the current p tag and added 2 different styles.
+     * A background color was set to green and the color of the text was white. All the changes where set in a new function
+     * customCreateElement calling to the parent, which would allow the p element to be process within parent elements. the new
+     * variable was then appened to the parent element where the changes would be applied. In order to have the changes appear
+     * in each different content-container I created a loop in which the changed would apply to all the paragraph after creating a \
+     * variable of all the p tags in the beginner. The index (i) would not be greater than the length of the allPtagThree variable
+     * and it would contiune to loop through them all until it reaches the end. I added an i++ in the parenthesis to have the function
+     * loop contstantly and another one at the end so it would not go to infinity and crash the browser.    
      * 
-     * 
-     */
+    */
 
     /*************************************** */
     /* 2: GRID OF BOXES */
@@ -295,48 +234,134 @@ function setup() {
     /* 2C:Then append this new element to the parent variable within the function. 
     /* 2D:Finally, return</code> this new element */
     /* 2E:Create a nested for loop (for rows and columns) to iterate through 10 columns and 10 rows (just like the JS Review :)). 
-        Call the customNewBoxCreate function, in order to generate a new div -> representing each cell in the grid. 
-        Ensure that the parent element for each of these new divs is the element whose id is named `new-grid`*/
+    Call the customNewBoxCreate function, in order to generate a new div -> representing each cell in the grid. 
+    Ensure that the parent element for each of these new divs is the element whose id is named `new-grid`*/
     /* 2F: You will see at this point that the x,y position of the resulting divs makes no sense... 
-        Fix this by doing the following: every time you call customNewBoxCreate() - save the current returned element 
-        in a variable i.e. returnedDiv. 
-        Set the style (left and top) to the of this element to 
-        the necessary x and y position (use the counter variables in the for nested for loop to 
-        calculate the new positions.
+    Fix this by doing the following: every time you call customNewBoxCreate() - save the current returned element 
+    in a variable i.e. returnedDiv. 
+    Set the style (left and top) to the of this element to 
+    the necessary x and y position (use the counter variables in the for nested for loop to 
+    calculate the new positions.
     /* 2G: BONUS I: Make every div in the resulting grid in an even numbered row have white background 
-        and otherwise let it have a background of purple.</li>
-    /* 2H: BONUS II: For every div in an even numbered row make it contain the text `EVEN`, 
-        otherwise lat it have the content `ODD`.*/
+and otherwise let it have a background of purple.</li>
+/* 2H: BONUS II: For every div in an even numbered row make it contain the text `EVEN`, 
+otherwise lat it have the content `ODD`.*/
 
     /***CODE */
 
+    function customNewBoxCreate(parent) {
+        let newDiv = document.createElement("div");
+        newDiv.classList.add("testDiv");
+        parent.appendChild(newDiv);
+        return newDiv;
+    }
+
+
+    let newGrid = document.getElementById("new-grid")
+    let gridSize = 40
+
+    for (let r = 0; r < 10; r++) {
+        for (let c = 0; c < 10; c++) {
+
+            let returnedDiv = customNewBoxCreate(newGrid);
+            returnedDiv.style.top = gridSize * r + "px";
+            returnedDiv.style.left = gridSize * c + "px";
+
+            if ((r % 2) == 0) {
+                returnedDiv.style.backgroundColor = "white"
+
+            }
+
+            else {
+
+                returnedDiv.style.backgroundColor = "cornflowerblue"
+            }
+        }
+    }
 
     /***EXPLANATION::
+     * Following the instruction of the task. A new function was created in order to build the grid. 
+     * The function was used to create a box by adding a newDiv variable that would create a new element.
+     * I added a style class to the new div element so that it would be applied to all the newDiv. I appened
+     * the child element to the parent and return the newDiv so that it would go back to the top. Two new variable
+     * was created outsided the nested loop that was be implement in the function. The variable newGrid would be applied
+     * in the element ID "new-grid". I gave the grid a size based on the style test-div which had a height of 40 and width of 40.
+     * In the nested loop I needed to create loops that would apply to the row and the column. The variables were set for r to equal
+     * row and c to equal column. The row and column could not be more that 10 and since it was a loop it would applied constantly
+     * until the number of boxes in the grid was 100. In the nest loop I created a returnDiv variable that wpuld equal the 
+     * customNewBoxCreate(newgrid) to have it called in element new-grid. A new style was added to both the r and the c. Row 
+     * had the style top and c had the style left. In order to have the grids appears the gridSize was mutiplied by the r to 
+     * have it appear along the top space by space. The same id was applied to the c to have the columns appear on the left. 
+     * The most important was to add the "px" add the px was indicating to the loop that the units was in px. Without it there
+     * would be only one square. Bonus: For the second background color I used the modulus or % operator to indicate of the  r%2 == 0
+     * the background color would be white. The 0 indicated that there would be no remainder meaning that it was number is even
+     * else if there is a remainder it would be odd. The color was applied to the rows that had even and odd numbers while if the 
+     * the number waS odd the color would be cornflowerblue.
      * 
      * 
-     */
+    */
 
     /*************************************** */
     /* 3: GRID OF BOXES II */
 
     /* 3A: Create ANOTHER nested for loop - in order to generate a new grid ... 
-        USE the same customNewBoxCreate function..., the only difference is that the parent element 
-        for each of these new divs is the element whose id is `new-grid-three`. */
+    USE the same customNewBoxCreate function..., the only difference is that the parent element 
+    for each of these new divs is the element whose id is `new-grid-three`. */
     /* 3B: Then: write the code to check when a column is a multiple of 3 (no remainder), 
-        when it is a column where the remainder is 1 or when the remainder is 2 ... 
-        HINT:: look up the % operator.. */
+    when it is a column where the remainder is 1 or when the remainder is 2 ... 
+    HINT:: look up the % operator.. */
     /* 3C: Then for each of the above cases: give the new divs in the first case a background of red, 
-            then the second a background of orange and the third yellow. */
+    then the second a background of orange and the third yellow. */
     /*  3D: Finally, let each div contain the text content representing the associated remainder 
-        when dividing by three. */
+    when dividing by three. */
 
     /***CODE */
 
 
+    let newGrid2 = document.getElementById("new-grid-three")
+    let gridSize2 = 40
+
+    for (let r = 0; r < 10; r++) {
+        for (let c = 0; c < 10; c++) {
+
+            let returnedDiv = customNewBoxCreate(newGrid2);
+            returnedDiv.style.top = gridSize2 * r + "px";
+            returnedDiv.style.left = gridSize2 * c + "px";
+
+            if ((c % 3) == 0) {
+                returnedDiv.style.backgroundColor = "red"
+                returnedDiv.textContent = "0"
+
+            }
+
+            else if ((c % 3) == 1) {
+
+                returnedDiv.style.backgroundColor = "orange"
+                returnedDiv.textContent = "1"
+            }
+
+            else {
+
+                returnedDiv.style.backgroundColor = "yellow"
+                returnedDiv.textContent = "2"
+            }
+
+
+        }
+    }
+
+
+
     /***EXPLANATION::
+     *  For the bonus question, the same set up and function as the task number 2 grid is applied. A second variable was created 
+     * for the bonus task and it will be documented in the element new-grid-three and the variable for the size has been changed
+     * to newGrid2. For the bonus section in the nested there are three condition and it will be applied to the c(column) instead of 
+     * the rows. Using the dvision of 3 if c%3 == 0, it has no remainder the  backgroundcolor style will be set to red and the
+     * textcontent will say zero. Else if c%3 === 1, the remainder is 1 the backgroundcolorstyle will be changed to orange and the
+     * textcontain will say one. Else, if the first 2 conditions are not met the background color will equal yellow and the
+     * textcontent will say two as it is the last one  remaining number. 
      * 
-     * 
-     */
+    */
 
     /*************************************** */
     /*** END PART THREE CREATE */
