@@ -9,46 +9,83 @@ function setup() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /*** ALL ANWSERS TO BE ADDED IN THE ALLOCATED SPACE */
     /*** START PART ONE ACCESS */
     /* 1: all paragraph elements */
-    /***CODE */
-    /***OUTPUT: console.log(document.getElementsByTagName("p"))
-     * This console log selects the paragraph as a list and shows all the tag name paragraph
+
+    /***CODE
+     *  console.log(document.getElementsByTagName("p")) */
+
+
+    /** This console log selects the paragraph as a list and shows all the tag name paragraph
      * in the html document
-    */
+     */
+
+    /***OUTPUT:
+     HTMLCollection { 0: p#1, 1: p#2.img-descript, 2: p#3.img-descript, 3: p#4.img-descript, 4: p#5.img-descript, 5: p#6.img-descript, 6: p#7.img-descript, 7: p#8.img-descript, 8: p#9.img-descript, … }
+     ​
+     0: <p id="1">
+     ​
+     1: <p id="2" class="img-descript">
+     ​
+     2: <p id="3" class="img-descript">
+     ​
+     3: <p id="4" class="img-descript">
+     ​
+     4: <p id="5" class="img-descript">
+     ​
+     5: <p id="6" class="img-descript">
+     ​
+     6: <p id="7" class="img-descript">
+     ​
+     7: <p id="8" class="img-descript">
+     ​
+     8: <p id="9" class="img-descript">
+     ​
+     length: 9
+     ​
+     <prototype>: HTMLCollectionPrototype { item: item(), namedItem: namedItem(), length: Getter, … }
+     
 
 
     /*************************************** */
     /* 2: only the first paragraph element */
-    /***CODE */
-    /***OUTPUT: console.log(document.getElementsByTagName("p")[0]);
-     console.log(document.getElementById("1"));
-     *  There are 2 console log which chooses the first paragraph on specifying the paragraph as an array
-     The second way would be the look into the id
-     */
+    /***CODE
+     *   console.log(document.getElementsByTagName("p")[0]);
+         console.log(document.getElementById("1"));
+    */
+    /***OUTPUT: <p id="1">
+                <p id="1">
+        *  There are 2 console log which chooses the first paragraph on specifying the paragraph as an array
+        The second way would be the look into the id
+        */
 
 
     /*************************************** */
     /* 3: all elements with the class inner-container */
-    /***CODE */
-    /***OUTPUT: console.log(document.getElementsByClassName("inner-container"))
+    /***CODE  console.log(document.getElementsByClassName("inner-container")) */
+    /***OUTPUT:
+     * HTMLCollection { 0: div.inner-container, 1: div.inner-container, 2: div.inner-container, 3: div.inner-container, 4: div.inner-container, 5: div.inner-container, 6: div.inner-container, 7: div.inner-container, length: 8 }
+​
+0: <div class="inner-container">
+​
+1: <div class="inner-container">
+​
+2: <div class="inner-container">
+​
+3: <div class="inner-container">
+​
+4: <div class="inner-container">
+​
+5: <div class="inner-container">
+​
+6: <div class="inner-container">
+​
+7: <div class="inner-container">
+​
+length: 8
+​
+<prototype>: HTMLCollectionPrototype { item: item(), namedItem: namedItem(), length: Getter, … }
      * The console log selects all the elements with the class name inner-container. It provides a list
      * of all the different inner container in the console.
     */
@@ -56,42 +93,45 @@ function setup() {
 
     /*************************************** */
     /* 4: the last image element inside the element that has the class img-container */
-    /***CODE */
-    /***OUTPUT: console.log(document.getElementsByTagName("img")[10])
+    /***CODE
+     * console.log(document.getElementsByTagName("img")[10])
+    */
+
+    /***OUTPUT: <img class="img-image" src="task-2-images/seventeen.png">
+     * 
      *  The console log that selects the last image element by using the img tag. The last image can be chosen
      * by selecting the right array.
     */
+
 
 
     /*************************************** */
     /* 5A: all h2 elements */
     /* 5B: length of the list in 5A */
     /* 5C: the text content of the first element in the list from 5A */
-    /***CODE */
-    /***OUTPUT:  5A: console.log(document.querySelector("h2"))
-     console.log(document.getElementsByTagName("h2"))
-     
-     5B: console.log(document.getElementsByTagName("h2").length)
-     
-     5C: const h2Element = document.querySelector('h2');
-     if (h2Element) {
-        console.log(h2Element.textContent);
-        } 
-        
-        const h2Element = document.querySelector('h2');
-        const textContent = h2Element.textContent
-        console.log(textContent)
-        * 
+    /***CODE
+     * 5A:  console.log(document.getElementsByTagName("h2"))
+     * console.log(document.querySelector("h2"))
+     * 5B: console.log(document.getElementsByTagName("h2").length)
+     * 5C:console.log(document.querySelector("h2").textcontent)
+    */
+
+    /***OUTPUT:
+     * <h2> The header of this fancy page</h2>
+     * length = 1
+     *  
         */
 
 
     /*************************************** */
     /* 6: the element with id name parent */
-    /***CODE */
-    /***OUTPUT: console.log(document.getElementById("parent"))
-     * The console log that select the element with the id parent. 
+    /***CODE
+     * console.log(document.getElementById("parent"))
     */
 
+    /***OUTPUT: <section id="parent">
+     * The console log that select the element with the id parent. 
+    */
 
     /*************************************** */
     /*** END PART ONE ACCESS */
@@ -101,10 +141,8 @@ function setup() {
     /*** START PART TWO MODIFY */
     /*************************************** */
     /* 1: Select the first paragraph and replace the text within the paragraph... */
-    /***CODE */
-
-    /** let text = document.getElementById("1").textContent
-     document.getElementById("1").innerHTML = "Ima Williams January 20th 2026" */
+    /***CODE
+     * document.querySelector("p").textContent = "Ima Williams January 20th 2026" */
 
     /*************************************** */
 
@@ -121,29 +159,35 @@ function setup() {
     /***CODE */
 
     document.querySelectorAll("img")[0].src = "task-2-images/seven.png"
-    document.querySelectorAll("img")[1].src = "task-2-images/seven.png"
-    document.querySelectorAll("img")[2].src = "task-2-images/seven.png"
-
+    docment.getElementByTagName("img")[0].src = "task-2-images/seven.png"
 
     /*************************************** */
     /* 4: Select the third paragraph element on the page and
     replace the content (within the paragraph) to be an h2 element which contains the text `TEST 123`
-    /***CODE  */
-
+    /***CODE */
     document.getElementById("3").innerHTML = "<h2> TEST 123</h2>"
+
+    /*document.querySelectorAll("p")[2].innerHTML= "<h2> TEST 123</h2>
+     */
+
 
 
     /*************************************** */
     /* 5: Select the fourth paragraph element on the page and
     add to the existing content an h2 element containing the text `TEST 123`
-    /***CODE */
+    /***CODE 
+     * *document.getElementById("4").innerHTML += "<h2>TEST 123</h2>" */
 
-    document.getElementById("4").innerHTML += "<h2>TEST 123</h2>"
+    /* document.querySelectorAll("p")[3].innerHTML += "<h2> TEST 123</h2>"
+    */
+
 
     /*************************************** */
     /* 6: Select the fifth paragraph element on the page and add to the existing content
     an img element that holds `one.png`, and add the class newStyle to said paragraph element.
-    /***CODE  */
+    /***CODE */
+
+
 
     let paragraph = document.getElementById("5")
     let newImage = document.createElement("img")
@@ -151,6 +195,7 @@ function setup() {
     paragraph.appendChild(newImage)
     document.getElementById("5").classList.add("newStyle")
 
+    // document.querySelectorAll("p")[4].innerHTML += "<img src ='task-2-images/one.png' class='newStyle'></img> TEST 123</h2>"
 
 
     /*************************************** */
