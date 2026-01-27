@@ -9,21 +9,6 @@ function setup() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /*** ALL ANWSERS TO BE ADDED IN THE ALLOCATED SPACE */
     /*** START PART ONE ACCESS */
     /* 1: all paragraph elements */
@@ -234,6 +219,14 @@ length: 8
     colors.forEach((color, index) => {
        innerContainers[index].style.backgroundColor = color;
        });*/
+
+    /**
+    * Class learned loop 
+    * for(let i=o; i<colors.length; i++)
+    * {if (innercontainer[i]){
+    * innerContainers[i].style.backgroundColor = colors[i];
+    * }}
+    */
 
     /** IMAGE FOR THE CHANGES ARE INSIDE Task-2-screengrab.
      * The image is called Task 2-MODIFY.png */

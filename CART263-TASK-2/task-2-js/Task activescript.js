@@ -141,8 +141,9 @@ length: 8
     /*** START PART TWO MODIFY */
     /*************************************** */
     /* 1: Select the first paragraph and replace the text within the paragraph... */
-    /***CODE
-     * document.querySelector("p").textContent = "Ima Williams January 20th 2026" */
+    /***CODE*/
+
+    document.querySelector("p").textContent = "Ima Williams January 20th 2026"
 
     /*************************************** */
 
@@ -158,36 +159,32 @@ length: 8
     /* 3: Change the src element of the first image element on the page to be ...
     /***CODE */
 
-    document.querySelectorAll("img")[0].src = "task-2-images/seven.png"
-    docment.getElementByTagName("img")[0].src = "task-2-images/seven.png"
+    document.getElementsByTagName("img")[0].src = "task-2-images/seven.png"
+    /** document.querySelectorAll("img")[0].src = "task-2-images/seven.png"*/
+
 
     /*************************************** */
     /* 4: Select the third paragraph element on the page and
     replace the content (within the paragraph) to be an h2 element which contains the text `TEST 123`
-    /***CODE */
+    /***CODE*/
+
     document.getElementById("3").innerHTML = "<h2> TEST 123</h2>"
 
-    /*document.querySelectorAll("p")[2].innerHTML= "<h2> TEST 123</h2>
-     */
-
-
+    /** document.querySelectorAll("p")[2].innerHTML= "<h2> TEST 123</h2>"*/
 
     /*************************************** */
     /* 5: Select the fourth paragraph element on the page and
     add to the existing content an h2 element containing the text `TEST 123`
-    /***CODE 
-     * *document.getElementById("4").innerHTML += "<h2>TEST 123</h2>" */
+    /***CODE */
 
-    /* document.querySelectorAll("p")[3].innerHTML += "<h2> TEST 123</h2>"
-    */
+    document.querySelectorAll("p")[3].innerHTML += "<h2> TEST 123</h2>"
 
+    /**document.getElementById("4").innerHTML += "<h2>TEST 123</h2>" */
 
     /*************************************** */
     /* 6: Select the fifth paragraph element on the page and add to the existing content
     an img element that holds `one.png`, and add the class newStyle to said paragraph element.
-    /***CODE */
-
-
+    /***CODE  */
 
     let paragraph = document.getElementById("5")
     let newImage = document.createElement("img")
@@ -195,7 +192,7 @@ length: 8
     paragraph.appendChild(newImage)
     document.getElementById("5").classList.add("newStyle")
 
-    // document.querySelectorAll("p")[4].innerHTML += "<img src ='task-2-images/one.png' class='newStyle'></img> TEST 123</h2>"
+    /**  document.querySelectorAll("p")[4].innerHTML += "<img src ='task-2-images/one.png' class='newStyle'></img> TEST 123</h2>"*/
 
 
     /*************************************** */
@@ -217,6 +214,14 @@ length: 8
     colors.forEach((color, index) => {
         innerContainers[index].style.backgroundColor = color;
     });
+
+    /**
+    * Class learned loop 
+    * for(let i=o; i<colors.length; i++)
+    * {if (innercontainer[i]){
+    * innerContainers[i].style.backgroundColor = colors[i];
+    * }}
+    */
 
     /** IMAGE FOR THE CHANGES ARE INSIDE Task-2-screengrab.
      * The image is called Task 2-MODIFY.png */
