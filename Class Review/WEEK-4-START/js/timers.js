@@ -241,14 +241,14 @@ window.onload = function () {
     }
 
     let aniRef = null;
-    //add a new particle
-    let p2 = document.createElement("div");
-    p2.id = "particle_two";
-    document.getElementById("parent").appendChild(p2);
-    p2.style.left = '500px'
-    p2.style.top = '100px';
-    let theta = 0;
-    aniRef = window.requestAnimationFrame(modifyParticle);
+    // //add a new particle
+    // let p2 = document.createElement("div");
+    // p2.id = "particle_two";
+    // document.getElementById("parent").appendChild(p2);
+    // p2.style.left = '500px'
+    // p2.style.top = '100px';
+    // let theta = 0;
+    // aniRef = window.requestAnimationFrame(modifyParticle);
 
     function modifyParticle() {
         let p2 = document.getElementById("particle_two");
