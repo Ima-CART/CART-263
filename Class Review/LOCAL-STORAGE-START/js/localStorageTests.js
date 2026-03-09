@@ -30,13 +30,14 @@ window.onload = function () {
         let valueA = localStorage.getItem("a");
         console.log(valueA);
 
-        //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
-        for (let [key, value] of Object.entries(localStorage)) {
-            console.log(`${key}: ${value}`);
-        }
+        // //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
+        // for (let [key, value] of Object.entries(localStorage)) {
+        //     console.log(`${key}: ${value}`);
+        // }
         for (let [key, value] of Object.entries(localStorage)) {
             let textBox = document.querySelector(`div[data-ref=${key}]`);
             //clear
+            console.log(textBox)
             textBox.innerHTML = value;
         }
 
