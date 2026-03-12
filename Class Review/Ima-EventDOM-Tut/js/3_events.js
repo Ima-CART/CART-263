@@ -65,7 +65,6 @@ function setup() {
             if (this.getAttribute("custom-bool") === "inactive") {
                 console.log("is inactive");
                 console.log(this.id)
-
                 // :: new access the class of parent (this)
                 let class_to_add = `${this.id}-section-active`;
                 this.classList.add(class_to_add)
@@ -73,11 +72,31 @@ function setup() {
                 let class_to_add_p = `${this.id}-section-p-active`;
                 document.querySelector(`#${this.id} p`).classList.add(class_to_add_p)
 
+                /**At the end of the if statement the function needs to be set to active.
+                 * If not it will jump straight to the else statment without doing anything.
+                 * Depending on the event listner if something becomes active it needs to be stated at the end
+                 */
+                this.setAttribute("custom-bool", "active")
+
             }
 
 
 
 
+            else {
+                console.log("is now active");
+                let class_to_remove = `${this.id}-section-active`;
+                this.classList.remove(class_to_remove);
+                // :: new access the class of child
+                let class_to_remove_p = `${this.id}-section-p-active`;
+                document.querySelector(`#${this.id} p`).classList.remove(class_to_remove_p);
+
+                /**Following the active custom-bool if it is active in the if statement.
+                 * The the attribute needs to be inactive in the else statement
+                 * Important to know when something needs to be active and inactive.
+                 */
+                this.setAttribute("custom-bool", "inactive");
+            }
 
         })
 
@@ -85,6 +104,31 @@ function setup() {
 
 
     }
+
+    document.querySelector("#bubbleButton").addEventListener("click", function () {
+        console.log("button clicked");
+
+        //<< CREATE A NEW ELEMENT ON THE FLY >>>
+        //this could be its own custom function ... 
+        let bubble = document.createElement("div");
+        bubble.classList.add("bubble");
+        bubble.style.left = `${Math.random() * (window.innerWidth - 200)}px`;
+        bubble.style.top = `${Math.random() * (window.innerHeight - 200)}px`;
+
+        let r = Math.ceil(Math.random() * 255); //new Math.ceil
+        let g = Math.ceil(Math.random() * 255);
+        let b = Math.ceil(Math.random() * 255);
+
+        bubble.style.background = `rgba(${r},${g},${b})`;
+        document.getElementById("top-layer").appendChild(bubble)
+
+
+
+
+
+
+    })
+
 
 
 

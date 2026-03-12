@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>getUserMedia Demo</title>
+    <title>getUserMedia Demo II</title>
+
 
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
@@ -34,24 +35,16 @@
         #video {
             display: block;
         }
-
-        .mirror {
-            /* Mirror the video horizontally */
-            -webkit-transform: scaleX(-1);
-            /* Safari and Chrome */
-            transform: scaleX(-1);
-        }
     </style>
-    <script type="text/javascript" src="js/getUserMedia.js"></script>
-
+    <script type="text/javascript" src="js/getUserMediaAndCanvas.js"></script>
 </head>
 
 <body>
 
-    <h1>Access Camera Example</h1>
+    <h1>Access Camera and Show on Canvas</h1>
     <main>
-        <!-- The video needs to be mirror in order for the video to be in the right direction-->
-        <video class="mirror" id="video" autoplay="autoplay" controls="true"></video>
+        <video id="video" autoplay="autoplay" controls="true"></video>
+        <canvas id="videoCanvas" width=640 height=240></canvas>
     </main>
 </body>
 
