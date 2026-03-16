@@ -2,86 +2,112 @@
 
 window.onload = setup;
 
-function setup () {
-    console.log("go task!");
+function setup() {
+  console.log("go task!");
 
- 
-/* GIVEN * : An object containing the current settings for drawing 
-*  THESE  presets will need to be modified ... 
-*/  
-    let currentPresets = {
-        color: "red",
-        stroke: 1,
-        shape: "square",
-        borderRadius: "0px",
-        isDrawing: true,
-        drawingMode: "mouse-move",
-      };
 
- /* GIVEN * : An object containing the current settings for text 
-*  THESE  presets will need to be modified ... 
-*/       
+  /* GIVEN * : An object containing the current settings for drawing 
+  *  THESE  presets will need to be modified ... 
+  */
+  let currentPresets = {
+    color: "red",
+    stroke: 1,
+    shape: "square",
+    borderRadius: "0px",
+    isDrawing: true,
+    drawingMode: "mouse-move",
+  };
+
+  /* GIVEN * : An object containing the current settings for text 
+ *  THESE  presets will need to be modified ... 
+ */
   let textPresets = {
-    fSize:"12px"
+    fSize: "12px"
 
   }
 
 
-/* GIVEN *  a reference to the div in which we will allow for drawing ... 
-*
-*/
-let pCanvas = document.getElementById("mouseCanvas");
+  /* GIVEN *  a reference to the div in which we will allow for drawing ... 
+  *
+  */
+  let pCanvas = document.getElementById("mouseCanvas");
 
-/* GIVEN *  a reference to the div in which we will allow for text input ... 
-*
-*/
-let typeArea = document.getElementById("typeArea");
+  /* GIVEN *  a reference to the div in which we will allow for text input ... 
+  *
+  */
+  let typeArea = document.getElementById("typeArea");
 
-/* GIVEN *  the event listener to detect if the mouse is moving in the div 
-* with id `mouseCanvas`. The callback function is addAPoint
-*
-*/
+  /* GIVEN *  the event listener to detect if the mouse is moving in the div 
+  * with id `mouseCanvas`. The callback function is addAPoint
+  *
+  */
   pCanvas.addEventListener("mousemove", addAPoint);
 
 
-/* GIVEN *  this function when called will check if drawing 
-* is true and the drawing mode is mouse-move then it will call the function to create a new point
-*
-*/
+  /* GIVEN *  this function when called will check if drawing 
+  * is true and the drawing mode is mouse-move then it will call the function to create a new point
+  *
+  */
 
-function addAPoint(event) {
+  function addAPoint(event) {
     if (currentPresets.isDrawing === true && currentPresets.drawingMode === "mouse-move") {
       createNewDrawingPoint(event.clientX, event.clientY);
     }
   }
 
 
- /* GIVEN *  the event listener to detect if the mouse is being clicked in the div 
-  * with id `mouseCanvas`
-  * TO DO *
-  * WILL HAVE DUAL FUNCTIONALITY (DEPENDENT ON THE DRAWING MODE)
-  * EITHER WILL SWITCH DRAWING OFF (LIKE LIFTING UP YOUR PEN)
-  * OR
-  * WILL ADD A POINT TO THE CANVAS 
-  
-  */
+  /* GIVEN *  the event listener to detect if the mouse is being clicked in the div 
+   * with id `mouseCanvas`
+   * TO DO *
+   * WILL HAVE DUAL FUNCTIONALITY (DEPENDENT ON THE DRAWING MODE)
+   * EITHER WILL SWITCH DRAWING OFF (LIKE LIFTING UP YOUR PEN)
+   * OR
+   * WILL ADD A POINT TO THE CANVAS 
+
+   */
   pCanvas.addEventListener("click", function (event) {
     if (currentPresets.drawingMode === "mouse-move") {
+
+      /**
+       * I needed to toggle the drawing mode on and off base on when the mouse is being clicked
+       * Starting of if the drawing preset is false then when click is would be true, if not then it would not draw
+       * If statement can be nested inside another if statement to complete the first if.
+       */
+      if (!currentPresets.isDrawing) {
+
+        currentPresets.isDrawing = true;
+      }
+
+      else {
+        currentPresets.isDrawing = false;
+
+      }
+
+      /**The bottom reprsents a boolean in which the isDrawing can be toggle on and off
+       * The currentPresets.isDrawing is already a true false statement base on the variable at the beginning
+       * So the if statement can be shorten in a boolean one line
+       */
+
+      //currentPresets.isDrawing = !currentPresets.isDrawing 
+
       //turn drawing on / off
       // TO DO
-     
+
     }
+
     //the click is now the drawing mode :)
     else {
+
+      createNewDrawingPoint(event.clientX, event.clientY)
       // TO DO
     }
   });
 
 
-/* GIVEN * function to create a new drawing point.
-*
-*/
-function createNewDrawingPoint(mouseX, mouseY) {
+  /* GIVEN * function to create a new drawing point.
+  *
+  */
+  function createNewDrawingPoint(mouseX, mouseY) {
     //get the mouse canvas
     let pCanvas = document.getElementById("mouseCanvas");
     // get the RENDERED coordinates
@@ -94,7 +120,7 @@ function createNewDrawingPoint(mouseX, mouseY) {
     //calculate the point to draw on the canvas
     let offsetX = Math.floor(mouseX - renderedCoordinates.x);
     let offsetY = Math.floor(mouseY - renderedCoordinates.y);
- 
+
 
     // set the left and top
     newDiv.style.left = offsetX + "px";
@@ -108,7 +134,7 @@ function createNewDrawingPoint(mouseX, mouseY) {
     newDiv.style.width = currentPresets.stroke + "px";
     newDiv.style.height = currentPresets.stroke + "px";
 
-      /**** NOTE HOW THE PRESETS ARE USED TO ASSIGN THE STYLE */
+    /**** NOTE HOW THE PRESETS ARE USED TO ASSIGN THE STYLE */
     //also set the border radius
     newDiv.style.borderRadius = currentPresets.borderRadius;
     //color
@@ -127,9 +153,25 @@ function createNewDrawingPoint(mouseX, mouseY) {
   *  3: Finally access all the current points drawn (hint: they all have the class name `point`)
      and change their current background color to the selected color.
   */
-  let colorButtons= document.querySelectorAll(".color-button");
-   
-   /*B:: STROKE BUTTON ********************************************/
+  let colorButtons = document.querySelectorAll(".color-button");
+
+  function changeColorWithValue(event) {
+    let buttonId = event.currentTarget.id // Returns the element whose event listeners triggered the event
+    currentPresets.color = buttonId
+
+    let dots = document.getElementsByClassName("point")
+    for (let dot of dots) {
+      dot.style.background = currentPresets.color
+
+    }
+  }
+
+  for (let element of colorButtons) {
+    element.addEventListener("click", changeColorWithValue)
+
+  }
+
+  /*B:: STROKE BUTTON ********************************************/
   /* TO DO: 
   *  1: Access the stroke button and assign an event listener to listen for the click event
   *  2: Write a callback function - that when the stroke button is clicked, access  the variable
@@ -138,7 +180,7 @@ function createNewDrawingPoint(mouseX, mouseY) {
   *  3: Finally access all the current points drawn (hint: they all have the class name `point`)
      and change their current stroke value to the updated value.
   */
-   let strokeButton = document.querySelector("#change-stroke-button");
+  let strokeButton = document.querySelector("#change-stroke-button");
 
   /*C:: SHAPE BUTTON ********************************************/
   /* TO DO: 
@@ -151,10 +193,10 @@ function createNewDrawingPoint(mouseX, mouseY) {
   *  3: Finally access all the current points drawn (hint: they all have the class name `point`)
      and change their current border-radius value to the updated value.
   */
-     let shapeButton = document.querySelector("#change-shape-button");
+  let shapeButton = document.querySelector("#change-shape-button");
 
 
-   /*D:: CHANGE DRAWING MODE ********************************************/
+  /*D:: CHANGE DRAWING MODE ********************************************/
   /* TO DO: 
   *  1: Access the shape and assign an event listener to listen for the click event
   *  2: Write a callback function - that when the mode button is clicked, access the variable
@@ -168,7 +210,7 @@ function createNewDrawingPoint(mouseX, mouseY) {
   */
   let modeButton = document.querySelector("#change-mode-button");
 
-   /*E:: OPACITY BUTTON ********************************************/
+  /*E:: OPACITY BUTTON ********************************************/
   /* TO DO: 
   *  1: Access the opacity button and assign an event listener to listen for the click event
   *  2: Write a callback function - that when the opacity button is clicked, access  the variable
@@ -177,7 +219,7 @@ function createNewDrawingPoint(mouseX, mouseY) {
   *  3: Finally access all the current points drawn (hint: they all have the class name `point`)
      and change their current opacity value to the updated value.
   */
-     let opacityButton = document.querySelector("#change-opacity-button");
+  let opacityButton = document.querySelector("#change-opacity-button");
 
   /*F:: ERASE BUTTON ********************************************/
   /* TO DO: 
@@ -185,7 +227,7 @@ function createNewDrawingPoint(mouseX, mouseY) {
   *  2: Write a callback function - that when the erase button is clicked, 
   *  remove all points (hint: they all have the class name `point`) from the drawing div
   */
- /**************************TEXT INPUT ********************************/
+  /**************************TEXT INPUT ********************************/
   /*A:: THE EVENT LISTENER ********************************************/
   /* TO DO: 
   * 1: Add an event listener to the window, to listen for the keydown event
@@ -204,8 +246,8 @@ function createNewDrawingPoint(mouseX, mouseY) {
   *  3: Finally access all the text that has been input (hint: access the textContent attribute of the typeArea Element`)
      and change the font size to the new font size.
   */
-   let fontsizeButton = document.querySelector("#change-font-size-button");
-   /*B:: UPPERCASE ********************************************/
+  let fontsizeButton = document.querySelector("#change-font-size-button");
+  /*B:: UPPERCASE ********************************************/
   /* TO DO: 
   *  1: Access the uppercase button and assign an event listener to listen for the click event
   *  2: Write a callback function - that when the this button is clicked change all the input text to uppercase (hint: access the textContent attribute of the typeArea Element`)
@@ -217,20 +259,20 @@ function createNewDrawingPoint(mouseX, mouseY) {
   *  1: Access the lowercase button and assign an event listener to listen for the click event
   *  2: Write a callback function - that when the this button is clicked change all the input text to lowercase (hint: access the textContent attribute of the typeArea Element`)
   */
- let lowerCaseButton = document.querySelector("#toLower-button");
- 
- /*D:: ERASE BUTTON ********************************************/
+  let lowerCaseButton = document.querySelector("#toLower-button");
+
+  /*D:: ERASE BUTTON ********************************************/
   /* TO DO: 
   *  1: Access the erase button and assign an event listener to listen for the click event
   *  2: Write a callback function - that when the erase button is clicked, 
   *  remove all text (hint: access the textContent attribute of the typeArea Element`)
   */
- /*E:: SELECT AND CHANGE TEXT COLOR BUTTON ********************************************/
- /* TO DO: 
-  *  1: Access the color input and assign an event listener to listen for the change event
-  *  2: Write a callback function - that when a color is selected,access all the text that has been input (hint: access the textContent attribute of the typeArea Element`)
-     and change the color to the new color.
-  */
+  /*E:: SELECT AND CHANGE TEXT COLOR BUTTON ********************************************/
+  /* TO DO: 
+   *  1: Access the color input and assign an event listener to listen for the change event
+   *  2: Write a callback function - that when a color is selected,access all the text that has been input (hint: access the textContent attribute of the typeArea Element`)
+      and change the color to the new color.
+   */
 
   /*F:: EMOJI BUTTONS ********************************************/
   /* TO DO: 
@@ -238,6 +280,9 @@ function createNewDrawingPoint(mouseX, mouseY) {
   *  2:Write a callback function - that when a specific emoji button is clicked, that specific emoji
   *  will be added to the inputted text hint: access the textContent attribute of the typeArea Element`)
   */
-  let allEmojis = document.querySelectorAll(".emoji-button")  
-   
+  let allEmojis = document.querySelectorAll(".emoji-button")
+
 } //end setup
+
+
+

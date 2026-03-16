@@ -64,6 +64,8 @@ function setup() {
             //check if is inactive
             if (this.getAttribute("custom-bool") === "inactive") {
                 console.log("is inactive");
+
+
                 console.log(this.id)
                 // :: new access the class of parent (this)
                 let class_to_add = `${this.id}-section-active`;
