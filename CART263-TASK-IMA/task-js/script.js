@@ -307,9 +307,9 @@ function setup() {
 
   function changeOpacity() {
 
-    if (currentPresets.opacity > 0.0 && currentPresets.opacity <= 1.0) {
+    if (currentPresets.opacity > 0.0) {
       currentPresets.opacity -= 0.1
-
+      currentPresets.opacity = Math.round(currentPresets.opacity * 10) / 10;
 
     }
     else {
@@ -323,7 +323,7 @@ function setup() {
 
 
     }
-    opacityButton.getElementsByTagName("p")[0].innerText = currentPresets.opacity;
+    opacityButton.getElementsByTagName("p")[0].innerText = currentPresets.opacity.toFixed(1);
 
 
   }
@@ -361,16 +361,34 @@ function setup() {
 
   /**************************TEXT INPUT ********************************/
   /*A:: THE EVENT LISTENER ********************************************/
-  /* TO DO: 
+  /* TO DO:
   * 1: Add an event listener to the window, to listen for the keydown event
   * 2: Write a callback function - that will add the value of the pressed key to the text content
   * (hint: access the textContent attribute of the typeArea Element`)..
-  * BONUS: only add to the text if the key typed is either a letter of the alphabet or a number or a space char
+  * BONUS: only add to the text if the key typed is either a letter of the alphabet or a number or a space bar
   * (hint: look up the what the keyCode attribute is for the key event)
- 
+  */
+  window.addEventListener("keydown", typeThings)
+
+  function typeThings(event) {
+
+    let keyCode = event.keyCode
+    let spacebarChar = keyCode === 32
+    let letterChar = (keyCode >= 64 && keyCode <= 90) || (keyCode >= 97 && keyCode <= 123)
+    let numberChar = (keyCode >= 48 && keyCode <= 57)
+
+    if (letterChar || spacebarChar || numberChar) {
+      typeArea.textContent += event.key
+    }
+
+
+  }
+
+
+
   /**************************BUTTONS FOR TEXT************************* */
-  /*A:: FONT SIZE ********************************************/
-  /* TO DO: 
+  /*B:: FONT SIZE ********************************************/
+  /* TO DO:
   *  1: Access the font-size button and assign an event listener to listen for the click event
   *  2: Write a callback function - that when the this button is clicked, access  the variable
   *   currentPresets.fSize - and check if it is < 32  - if it is add by 1, else set it to 12.
@@ -379,34 +397,59 @@ function setup() {
      and change the font size to the new font size.
   */
   let fontsizeButton = document.querySelector("#change-font-size-button");
-  /*B:: UPPERCASE ********************************************/
+
+  fontsizeButton.addEventListener("click", changeFont)
+
+  function changeFont() {
+
+    if (textPresets.fSize >= 12 && textPresets.fSize < 32) {
+
+      textPresets.fSize++
+    }
+    else {
+      textPresets.fSize = 12;
+    }
+    fontsizeButton.getElementsByTagName("p")[0].innerText = textPresets.fSize;
+
+    let texts = document.getElementById("typeArea")
+    for (let text of texts) {
+      text.style.fontSize += textPresets.fSize + "px";
+
+
+
+    }
+  };
+
+
+
+  /*C:: UPPERCASE ********************************************/
   /* TO DO: 
   *  1: Access the uppercase button and assign an event listener to listen for the click event
   *  2: Write a callback function - that when the this button is clicked change all the input text to uppercase (hint: access the textContent attribute of the typeArea Element`)
   */
   let upperCaseButton = document.querySelector("#toUpper-button");
 
-  /*C:: LOWER CASE ********************************************/
+  /*D:: LOWER CASE ********************************************/
   /* TO DO: 
   *  1: Access the lowercase button and assign an event listener to listen for the click event
   *  2: Write a callback function - that when the this button is clicked change all the input text to lowercase (hint: access the textContent attribute of the typeArea Element`)
   */
   let lowerCaseButton = document.querySelector("#toLower-button");
 
-  /*D:: ERASE BUTTON ********************************************/
+  /*E:: ERASE BUTTON ********************************************/
   /* TO DO: 
   *  1: Access the erase button and assign an event listener to listen for the click event
   *  2: Write a callback function - that when the erase button is clicked, 
   *  remove all text (hint: access the textContent attribute of the typeArea Element`)
   */
-  /*E:: SELECT AND CHANGE TEXT COLOR BUTTON ********************************************/
+  /*F:: SELECT AND CHANGE TEXT COLOR BUTTON ********************************************/
   /* TO DO: 
    *  1: Access the color input and assign an event listener to listen for the change event
    *  2: Write a callback function - that when a color is selected,access all the text that has been input (hint: access the textContent attribute of the typeArea Element`)
       and change the color to the new color.
    */
 
-  /*F:: EMOJI BUTTONS ********************************************/
+  /*G:: EMOJI BUTTONS ********************************************/
   /* TO DO: 
   *  1: Access each emoji button and assign an event listener to listen for the click event
   *  2:Write a callback function - that when a specific emoji button is clicked, that specific emoji
