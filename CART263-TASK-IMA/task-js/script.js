@@ -156,20 +156,29 @@ function setup() {
   let colorButtons = document.querySelectorAll(".color-button");
 
   function changeColorWithValue(event) {
-    let buttonId = event.currentTarget.id // Returns the element whose event listeners triggered the event
-    currentPresets.color = buttonId
+    let buttonId = event.currentTarget.id; // Returns the element whose event listeners triggered the event
+    currentPresets.color = buttonId;
+
+    /**
+     * Applying the changes to all the dots. Previous and future dots
+     * To apply the changes to all the dots a loop functions needs to be applied
+     * Using the class name point to apply all the changes
+     */
 
     let dots = document.getElementsByClassName("point")
     for (let dot of dots) {
-      dot.style.background = currentPresets.color
+      dot.style.background = currentPresets.color;
 
-    }
-  }
-
+    };
+  };
+  /**
+   * Applying the event listner to go through all the colorbutton
+   * Use a for loop to have it pass through all the button instead of writing the click event 7 times or more
+   */
   for (let element of colorButtons) {
     element.addEventListener("click", changeColorWithValue)
 
-  }
+  };
 
   /*B:: STROKE BUTTON ********************************************/
   /* TO DO: 
@@ -182,18 +191,72 @@ function setup() {
   */
   let strokeButton = document.querySelector("#change-stroke-button");
 
+
+  strokeButton.addEventListener("click", changeStroke)
+
+  function changeStroke() {
+
+    if (currentPresets.stroke >= 1 && currentPresets.stroke < 10) {
+
+      currentPresets.stroke++
+    }
+    else {
+      currentPresets.stroke = 1;
+    }
+    strokeButton.getElementsByTagName("p")[0].innerText = currentPresets.stroke;
+
+    let dots = document.getElementsByClassName("point")
+    for (let dot of dots) {
+      dot.style.height = currentPresets.stroke + "px";
+      dot.style.width = currentPresets.stroke + "px";
+
+
+    }
+  };
+
+
+
   /*C:: SHAPE BUTTON ********************************************/
   /* TO DO: 
   *  1: Access the shape and assign an event listener to listen for the click event
   *  2: Write a callback function - that when the shape button is clicked, access the variable
   *   currentPresets.shape - and check if it is "circle" or "square"  
   *   - if it is "square": set the currentPresets.shape  to "circle" and the opposite (circle to square)
-  *   Upate currentPresets.borderRadius to "0px" if the updated preset is square and to "5px" otherwise
+  *   Update currentPresets.borderRadius to "0px" if the updated preset is square and to "5px" otherwise
   *   Update the value in the  shape button as well
   *  3: Finally access all the current points drawn (hint: they all have the class name `point`)
      and change their current border-radius value to the updated value.
   */
   let shapeButton = document.querySelector("#change-shape-button");
+
+  shapeButton.addEventListener("click", changeShape);
+
+  function changeShape() {
+
+
+    if (currentPresets.shape === "square") {
+      currentPresets.borderRadius = 5 + "px";
+      currentPresets.shape = "circle";
+
+
+    }
+    else {
+      currentPresets.borderRadius = 0 + "px";
+      currentPresets.shape = "square";
+
+
+    };
+    shapeButton.getElementsByTagName("p")[0].innerText = currentPresets.shape;
+    let dots = document.getElementsByClassName("point")
+    for (let dot of dots) {
+      dot.style.borderRadius = currentPresets.borderRadius
+
+
+
+    }
+
+
+  };
 
 
   /*D:: CHANGE DRAWING MODE ********************************************/
@@ -209,6 +272,25 @@ function setup() {
   *   turn drawing off it is on or on if it is off (when the drawing mode is mouse-move)
   */
   let modeButton = document.querySelector("#change-mode-button");
+  modeButton.addEventListener("click", changeMode)
+
+  function changeMode() {
+
+    if (currentPresets.drawingMode === "mouse-move") {
+      currentPresets.drawingMode = "mouse-click"
+
+
+
+    }
+
+    else {
+      currentPresets.drawingMode = "mouse-move"
+    }
+
+    modeButton.getElementsByTagName("p")[0].innerText = currentPresets.drawingMode;
+
+
+  };
 
   /*E:: OPACITY BUTTON ********************************************/
   /* TO DO: 
@@ -221,12 +303,62 @@ function setup() {
   */
   let opacityButton = document.querySelector("#change-opacity-button");
 
+  opacityButton.addEventListener("click", changeOpacity)
+
+  function changeOpacity() {
+
+    if (currentPresets.opacity > 0.0 && currentPresets.opacity <= 1.0) {
+      currentPresets.opacity -= 0.1
+
+
+    }
+    else {
+      currentPresets.opacity = 1.0
+    }
+
+    let dots = document.getElementsByClassName("point")
+    for (let dot of dots) {
+      dot.style.opacity = currentPresets.opacity
+
+
+
+    }
+    opacityButton.getElementsByTagName("p")[0].innerText = currentPresets.opacity;
+
+
+  }
+
   /*F:: ERASE BUTTON ********************************************/
-  /* TO DO: 
+  /* TO DO:
   *  1: Access the erase button and assign an event listener to listen for the click event
   *  2: Write a callback function - that when the erase button is clicked, 
   *  remove all points (hint: they all have the class name `point`) from the drawing div
   */
+
+  let eraseButton = document.querySelector("#change-erase-button");
+
+  eraseButton.addEventListener("click", eraseEverything);
+  function eraseEverything() {
+
+    /**
+     * Change to queryselectorAll due it being a static node
+     * Being a static nodes allows all the elements to be deleted at once
+     * The static list will be moved from the page, not the loop, but not the list that I am looping through
+     * It will be removed from the memory once the function is completed
+     * While using the get elementById is a live node which means that it will only delete half until all the half are removed
+     */
+    let dots = document.querySelectorAll(".point")
+    for (let dot of dots) {
+
+      dot.remove()
+
+
+
+    }
+
+
+  };
+
   /**************************TEXT INPUT ********************************/
   /*A:: THE EVENT LISTENER ********************************************/
   /* TO DO: 
