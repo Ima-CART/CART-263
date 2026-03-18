@@ -411,13 +411,7 @@ function setup() {
     }
     fontsizeButton.getElementsByTagName("p")[0].innerText = textPresets.fSize;
 
-    let texts = document.getElementById("typeArea")
-    for (let text of texts) {
-      text.style.fontSize += textPresets.fSize + "px";
-
-
-
-    }
+    typeArea.style.fontSize = textPresets.fSize + "px";
   };
 
 
@@ -425,9 +419,17 @@ function setup() {
   /*C:: UPPERCASE ********************************************/
   /* TO DO: 
   *  1: Access the uppercase button and assign an event listener to listen for the click event
-  *  2: Write a callback function - that when the this button is clicked change all the input text to uppercase (hint: access the textContent attribute of the typeArea Element`)
+  *  2: Write a callback function - that when this button is clicked change all the input text to uppercase (hint: access the textContent attribute of the typeArea Element`)
   */
   let upperCaseButton = document.querySelector("#toUpper-button");
+  upperCaseButton.addEventListener("click", upCaseBtn)
+
+  function upCaseBtn() {
+
+
+    typeArea.textContent = typeArea.textContent.toUpperCase();
+
+  }
 
   /*D:: LOWER CASE ********************************************/
   /* TO DO: 
@@ -436,18 +438,51 @@ function setup() {
   */
   let lowerCaseButton = document.querySelector("#toLower-button");
 
+  lowerCaseButton.addEventListener("click", loCaseBtn)
+  function loCaseBtn() {
+
+    typeArea.textContent = typeArea.textContent.toLowerCase();
+  }
+
   /*E:: ERASE BUTTON ********************************************/
-  /* TO DO: 
+  /* TO DO:
   *  1: Access the erase button and assign an event listener to listen for the click event
   *  2: Write a callback function - that when the erase button is clicked, 
   *  remove all text (hint: access the textContent attribute of the typeArea Element`)
   */
+
+  let eraseTextButton = document.querySelector("#text-erase")
+
+  eraseTextButton.addEventListener("click", eraseTextBtn)
+
+  function eraseTextBtn() {
+    /**
+     * "" is used when needed to removed the text and it becomes an empty string. So text content will become blank when "" is used
+     */
+    typeArea.textContent = "";
+
+  }
+
   /*F:: SELECT AND CHANGE TEXT COLOR BUTTON ********************************************/
-  /* TO DO: 
+  /* TO DO:
    *  1: Access the color input and assign an event listener to listen for the change event
    *  2: Write a callback function - that when a color is selected,access all the text that has been input (hint: access the textContent attribute of the typeArea Element`)
       and change the color to the new color.
    */
+
+  let colorTextButton = document.getElementById("setColor")
+
+  colorTextButton.addEventListener("click", changeTextColor)
+  function changeTextColor() {
+
+    /**
+     * Use the dot value to change the text content to whatever the color value of the button. 
+     * It is a method that returns an array of the propertu values of an object(w3school)
+     */
+    typeArea.style.color = colorTextButton.value;
+
+  }
+
 
   /*G:: EMOJI BUTTONS ********************************************/
   /* TO DO: 
@@ -457,7 +492,15 @@ function setup() {
   */
   let allEmojis = document.querySelectorAll(".emoji-button")
 
+  allEmojis.forEach(function (btn) { btn.addEventListener("click", emojiFun) })
+
+  function emojiFun(event) {
+    let emojiId = event.currentTarget.textContent.trim();
+    typeArea.textContent += emojiId
+  }
+
+
+
+
 } //end setup
-
-
 
