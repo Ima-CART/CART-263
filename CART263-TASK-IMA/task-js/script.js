@@ -309,7 +309,7 @@ function setup() {
 
     if (currentPresets.opacity > 0.0) {
       currentPresets.opacity -= 0.1
-      currentPresets.opacity = Math.round(currentPresets.opacity * 10) / 10;
+      // currentPresets.opacity = Math.round(currentPresets.opacity * 10) / 10;
 
     }
     else {
