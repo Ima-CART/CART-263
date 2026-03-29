@@ -1,7 +1,7 @@
-window.onload = go();
+window.onload = go;
 
 function go() {
-
+  console.log("go")
   /***** GIVEN :: ******************************/
   /* function to go through the buttons and select which canvas to activate */
   function mainMenu() {
@@ -34,26 +34,90 @@ function go() {
   /* first canvas function*/
   /************************************************************** */
   function goOne() {
-    console.log("in one")
+    console.log("in one");
     //PART 1: create an array called `cat_array` to hold 10 `cats`  
-    let cat_array = new array(10);
+    let cat = [];
     //PART 2: add 10 `cats` to the `cat_array` using the `createCat()`-
-    // Each `cat` should be 50px by 50px  
-    // cats 1-5 should be have a y value of 50 and x going from 10 - 210 
-    //cats  6-10 should have a y value of 200 and x going from 10 - 210 
+    // Each `cat` should be 50px by 50px
+    // cats 1-5 should be have a y value of 50 and x going from 10 - 210
+    //cats  6-10 should have a y value of 200 and x going from 10 - 210
     // the objects all need to be in the div with id `draw-a`
 
-    for (let i = 0; i < 10; i++) {
-      cat_array.push(createCat())
-    }
+    /**
+     * For loop that will access the first 5 elements of the array
+     */
+    for (let i = 0; i < 5; i++) {
+      cat.push(
+        createCat(document.querySelector("#draw-a"), i * 50 + 10, 50, 50, 50),
+      );
+    };
+
+
+    /**
+     * The for loop for the last 5 elements of the array
+    */
+    for (let i = 5; i < 10; i++) {
+      cat.push(
+        createCat(document.querySelector("#draw-a"), (i - 5) * 50 + 10, 200, 50, 50)
+      );
+    };
+
     //PART 3: use a setTimeout to change the src property of the first 5 images to be cat_4_b.svg in 10 seconds.
     //Use another setTimeout to change the src property of the last 5 images to be cat_4_c.svg in 15 seconds
 
+    /**
+     * The set timeout targeting the first 5 elements and changing the content
+     * There is no need to create new cat. I am only changing the current cat element to a different picture
+     */
+    // setTimeout(function () {
+    //   for (let i = 0; i < 5; i++) {
+    //     cat[i].querySelector("img").src = "task-assets/cat_4_b.svg"
+    //     console.log(i)
+
+    //   };
+    // }, 10000);
+
+    /**
+     * The second timeout targetting the last 5 elements of the array and change the image
+     */
+
+    // setTimeout(function () {
+    //   for (let i = 5; i < 10; i++) {
+    //     cat[i].querySelector("img").src = "task-assets/cat_4_c.svg "
+
+    //   };
+    // }, 15000);
 
     //PART 4: comment out ALL of PART 3 and use a setInterval to every 2 seconds to starting with the first image:
-    // set the opacity of the next cat image to 0 
+    // set the opacity of the next cat image to 0
     // ending with the 10th image (will be 20 seconds later)
     // After the last image has had its opacity set to 0 clear the setInterval
+
+    let i = 0
+    // setInterval(function () {
+
+    //   console.log(i)
+
+    //   if (i < cat.length) {
+    //     cat[i].querySelector("img").style.opacity = "0";
+
+    //     i++
+    //   }
+    // }, 2000);
+
+    let ref = setInterval(changeOpacity, 2000)
+    function changeOpacity() {
+
+      if (i < cat.length) {
+        cat[i].querySelector("img").style.opacity = "0";
+
+        i++
+      }
+
+      else if (i = cat.length) {
+        clearInterval(ref)
+      }
+    }
 
     /***** GIVEN :: ******************************/
     // function that generates a cat image in a div 
@@ -85,13 +149,24 @@ function go() {
     let numDogs = 2
 
     //PART 1: create an array called `dog_array` to hold 2 `dogs`
-    let dog_array = []
+    let dog = []
 
     //PART 2: add 2 `dogs` to to the `dog_array` using the `createDog()`-
-    //Each `dog` should be 100px by 100px  
+    //Each `dog` should be 100px by 100px
     // dog 1 should be have a y value of 50 and x of 110 and an id of "a_dog"
     //dog 2 should have a y value of 50 and x of 220 and an id of "b_dog"
     // the objects all need to be in the div with id `draw-b`
+    for (let i = 0; i < 5; i++) {
+      dog.push(
+        createDog(document.querySelector("#draw-b"), 110, 50, 100, 100, "a_dog"),
+      );
+    };
+
+    for (let i = 0; i < 5; i++) {
+      dog.push(
+        createDog(document.querySelector("#draw-b"), 220, 50, 100, 100, "b_dog"),
+      );
+    };
 
     //PART 3: - the createDog() has an  event listener for `click` on the `img` variable:
     // Please complete the `checkCollision` call back function to have the following functionality:
