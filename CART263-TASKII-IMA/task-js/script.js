@@ -114,7 +114,7 @@ function go() {
         i++
       }
 
-      else if (i = cat.length) {
+      else {
         clearInterval(ref)
       };
     };
@@ -381,21 +381,27 @@ function go() {
       else {
         cat.style.transform = 'scale(1,-1)'
       }
-
-
-
     };
   }
+
+
   /* fourth canvas function*/
   function goFour() {
     console.log("in in four")
     // FREESTYLE USING WHATEVER (your own shapes/images... text...)
     // use window.requestAnimationFrame() to create your own animation
 
+    /**
+     * Variables for the red panda and two bamboo
+     */
     let rdPanda = createrdPanda(document.querySelector("#draw-d"), 220, 100, 180, 180, "red_panda")
     let bamboo = createBamboo(document.querySelector("#draw-d"), 50, 285, 100, 100, "green_bamboo")
     let bamboo2 = createBamboo(document.querySelector("#draw-d"), document.querySelector("#draw-d").getBoundingClientRect().width - 150, 0, 100, 100, "green_bamboo")
 
+
+    /**
+     * Creating the two functions that creates the red panda and the bamboo
+     */
     function createrdPanda(parentDiv, x, y, w, h,) {
       let outer = document.createElement("div");
       let img = document.createElement("img");
@@ -428,16 +434,20 @@ function go() {
       return outer;
     }
 
-    let bambooSpeedX = 2;
 
+    /**
+     * Animation for the red panda pulsing/oscillation
+     * Animation for the bamboo
+     */
 
-    /***** GIVEN :: ******************************/
-    window.requestAnimationFrame(animate);
     window.requestAnimationFrame(pulseAnimate);
-    /***** GIVEN :: ******************************/
+    window.requestAnimationFrame(animate);
+
+
+    /**
+     * Adding a pulse/oscillating animation to the red panda
+    */
     let theta = 0
-
-
     function pulseAnimate() {
       let mappedNum = mapNumRange(Math.sin(theta), -1, 1, 5, 200)
       rdPanda.style.width = (mappedNum) + "px";
@@ -449,35 +459,35 @@ function go() {
 
     const mapNumRange = (num, inMin, inMax, outMin, outMax) =>
       ((num - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin
-    //the function that is called every frame
+
+
+
+    /**
+     * Bamboo animtion 
+     */
+
+    //Speed of the bamboo moving at speed on the x axis
+    let bambooSpeedX = 2;
     function animate() {
-      /**Part 2A
-       * ParseInt is needed because it strings so it is including the unit and adding it with the dogspeed and 
-       * concatenate the px to the dog speed
-       */
+
+      /*
+      * Adding 2 bamboos that move in 2 different directions
+      */
       bamboo.style.left = parseInt(bamboo.style.left) + bambooSpeedX + "px"
       bamboo2.style.left = parseInt(bamboo2.style.left) - bambooSpeedX + "px"
 
 
-
-
       /**
-       * Part 2B
-       * Adding the checkEdgeDog so the dog doesn't go out of bounds
-       */
+       * Adding the checkEdgeBamboo so the dog doesn't go out of bounds
+      */
       checkEdgesBamboo();
-
-
-
-
-      // const mapNumRange = (num, inMin, inMax, outMin, outMax) =>
-      //   ((num - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin
 
       window.requestAnimationFrame(animate);
     }
-    /***** GIVEN :: ******************************/
-    // the function to check if the dog is at the edge of the canvas and needs
-    //to switch direction
+
+    /**
+     * Setting the boundaries for the bamboos so that it goes back and forth
+     */
     function checkEdgesBamboo() {
       let boundaries = document.querySelector("#draw-d").getBoundingClientRect();
       if (
