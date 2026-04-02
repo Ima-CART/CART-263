@@ -248,28 +248,28 @@ window.onload = function () {
     // }
 
     // let aniRef = null;
-    // //add a new particle
-    // let p2 = document.createElement("div");
-    // p2.id = "particle_two";
-    // document.getElementById("parent").appendChild(p2);
-    // p2.style.left = '500px'
-    // p2.style.top = '100px';
-    // let theta = 0;
-    // aniRef = window.requestAnimationFrame(modifyParticle);
+    //add a new particle
+    let p2 = document.createElement("div");
+    p2.id = "particle_two";
+    document.getElementById("parent").appendChild(p2);
+    p2.style.left = '500px'
+    p2.style.top = '100px';
+    let theta = 0;
+    aniRef = window.requestAnimationFrame(modifyParticle);
 
-    // function modifyParticle() {
-    //     let p2 = document.getElementById("particle_two");
-    //     //map -1 to 1 to between 5 100
-    //     let mappedNum = mapNumRange(Math.sin(theta), -1, 1, 5, 100)
-    //     p2.style.width = (mappedNum) + "px";
-    //     p2.style.height = (mappedNum) + "px";
-    //     p2.style.borderRadius = (mappedNum) + "px";
-    //     theta += 0.05;
-    //     aniRef = window.requestAnimationFrame(modifyParticle);
-    // }
-    // //same as map in p5
-    // const mapNumRange = (num, inMin, inMax, outMin, outMax) =>
-    //     ((num - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin
+    function modifyParticle() {
+        let p2 = document.getElementById("particle_two");
+        //map -1 to 1 to between 5 100
+        let mappedNum = mapNumRange(Math.sin(theta), 0, 1, 5, 100)
+        p2.style.width = (mappedNum) + "px";
+        p2.style.height = (mappedNum) + "px";
+        p2.style.borderRadius = (mappedNum) + "px";
+        theta += 0.5;
+        aniRef = window.requestAnimationFrame(modifyParticle);
+    }
+    //same as map in p5
+    const mapNumRange = (num, inMin, inMax, outMin, outMax) =>
+        ((num - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin
 
 
     // window.addEventListener("keydown", function (e) {

@@ -116,8 +116,8 @@ function go() {
 
       else if (i = cat.length) {
         clearInterval(ref)
-      }
-    }
+      };
+    };
 
     /***** GIVEN :: ******************************/
     // function that generates a cat image in a div 
@@ -136,37 +136,38 @@ function go() {
       parentDiv.appendChild(outer_img)
       return outer_img;
 
-    }
-  }
+    };
+  };
 
   /************************************************************** */
   /* second canvas function*/
   /************************************************************** */
   function goTwo() {
-    console.log("in two")
+    console.log("in two");
     //PART 0: create a variable called `numDogs` to hold the value `2` - 
     // this will be the number of dogs we start with
-    let numDogs = 2
+    let numDogs = 2;
 
     //PART 1: create an array called `dog_array` to hold 2 `dogs`
-    let dog = []
+    let dog = [];
 
     //PART 2: add 2 `dogs` to to the `dog_array` using the `createDog()`-
     //Each `dog` should be 100px by 100px
     // dog 1 should be have a y value of 50 and x of 110 and an id of "a_dog"
     //dog 2 should have a y value of 50 and x of 220 and an id of "b_dog"
     // the objects all need to be in the div with id `draw-b`
-    for (let i = 0; i < 5; i++) {
-      dog.push(
-        createDog(document.querySelector("#draw-b"), 110, 50, 100, 100, "a_dog"),
-      );
-    };
 
-    for (let i = 0; i < 5; i++) {
-      dog.push(
-        createDog(document.querySelector("#draw-b"), 220, 50, 100, 100, "b_dog"),
-      );
-    };
+    /**
+     * Creating the two different dogs in the array and passing throught the parentDiv,x,y,w,h,id)
+     */
+    dog.push(
+      createDog(document.querySelector("#draw-b"), 110, 50, 100, 100, "a_dog"),
+    );
+
+    dog.push(
+      createDog(document.querySelector("#draw-b"), 220, 50, 100, 100, "b_dog"),
+    );
+
 
     //PART 3: - the createDog() has an  event listener for `click` on the `img` variable:
     // Please complete the `checkCollision` call back function to have the following functionality:
@@ -194,15 +195,50 @@ function go() {
       parentDiv.appendChild(outer_img)
       return outer_img;
 
-    }
+    };
+
+
     /***** GIVEN :: ******************************/
     //callback function 
+
+    /**
+     * Using the checkCollision and writing 2 setTimeout inside the function to add the a and the b
+     * It is possible to add 2 setTimeout function to allow two things to happen at the same time
+     */
     function checkCollision(e) {
       numDogs++;
-      let el = e.target
+      let el = e.target;
       console.log(el)
-    }
-  }
+
+      setTimeout(function () {
+        el.src = "task-assets/dog_c.svg";
+
+
+
+      }, 2000);
+
+      setTimeout(function () {
+
+        /**
+         * The dogs need to appear at different X and Y so in this case there needs to be a new Y and an new X
+         * They need to appear at random so needs Math.random()
+         */
+        let newX = Math.random() * 200;
+        let newY = Math.random() * 400;
+
+        /**
+         * Added a new variable for the dog in order to change the height, width and the id
+         * Then push the new dog into the dog array
+         */
+        let newDog = createDog(document.querySelector("#draw-b"), newX, newY, 50, 50, `dog_${numDogs}`)
+
+        dog.push(newDog)
+
+      }, 3000);
+
+    };
+
+  };
 
   /************************************************************** */
   /* third canvas function*/
@@ -211,10 +247,14 @@ function go() {
     console.log("in in three")
     //PART 1: create an a variable called `dog` to hold a `dog`
     //and a variable called `cat` to hold a `cat`
-    //use the  `createDog()` and the `createCat()` respectively to assign 
+    //use the  `createDog()` and the `createCat()` respectively to assign
     // new objects to the variables `dog` and `cat`.
     // the objects all need to be in the div with id `draw-c` and should be 50 by 50.
     // the x and y positions can be anything, and the ids can be anything (unique).
+
+    let dog = createDog(document.querySelector("#draw-c"), 150, 75, 50, 50, "sammy_d")
+    let cat = createCat(document.querySelector("#draw-c"), 50, 10, 50, 50, "fluff_kins")
+
 
     // PART 2A:
     // animate the dog: within the `animate()` function, move the dog on the x axis using the
@@ -282,8 +322,24 @@ function go() {
     /***** GIVEN :: ******************************/
     //the function that is called every frame
     function animate() {
+      /**Part 2A
+       * ParseInt is needed because it strings so it is including the unit and adding it with the dogspeed and 
+       * concatenate the px to the dog speed
+       */
+      dog.style.left = parseInt(dog.style.left) + dogSpeedX + "px"
 
+      /**
+       * Part 2B
+       * Adding the checkEdgeDog so the dog doesn't go out of bounds
+       */
+      checkEdgesDog();
 
+      /**
+       * Part 3A
+       */
+      cat.style.top = parseInt(cat.style.top) + catSpeedY + "px"
+
+      checkEdgesCat();
       window.requestAnimationFrame(animate);
     }
     /***** GIVEN :: ******************************/
@@ -305,6 +361,30 @@ function go() {
       }
 
     }//checkEdgesDog
+
+    /**
+     * Part 3B 
+     * Creating a function for checkEdgesCat
+     */
+    function checkEdgesCat() {
+      let boundaries = document.querySelector("#draw-c").getBoundingClientRect();
+
+      if (parseInt(cat.style.top) > boundaries.height - parseInt(cat.style.height) ||
+        parseInt(cat.style.top) <= 0
+      )
+        catSpeedY *= -1;
+
+      //flip the image
+      if (catSpeedY > 0) {
+        cat.style.transform = 'scale(1,1)';
+      }
+      else {
+        cat.style.transform = 'scale(1,-1)'
+      }
+
+
+
+    };
   }
   /* fourth canvas function*/
   function goFour() {
@@ -312,7 +392,107 @@ function go() {
     // FREESTYLE USING WHATEVER (your own shapes/images... text...)
     // use window.requestAnimationFrame() to create your own animation
 
+    let rdPanda = createrdPanda(document.querySelector("#draw-d"), 220, 100, 180, 180, "red_panda")
+    let bamboo = createBamboo(document.querySelector("#draw-d"), 50, 285, 100, 100, "green_bamboo")
+    let bamboo2 = createBamboo(document.querySelector("#draw-d"), document.querySelector("#draw-d").getBoundingClientRect().width - 150, 0, 100, 100, "green_bamboo")
+
+    function createrdPanda(parentDiv, x, y, w, h,) {
+      let outer = document.createElement("div");
+      let img = document.createElement("img");
+      outer.classList.add("out-cont");
+      outer.appendChild(img);
+      img.src = "task-assets/red-panda-watercolor.png";
+      img.classList.add("img-class-rdPanda");
+      outer.style.height = h + "px";
+      outer.style.width = w + "px";
+      outer.style.left = x + "px";
+      outer.style.top = y + "px";
+      outer.style.opacity = "1";
+      parentDiv.appendChild(outer);
+      return outer;
+    }
+
+    function createBamboo(parentDiv, x, y, w, h,) {
+      let outer = document.createElement("div");
+      let img = document.createElement("img");
+      outer.classList.add("out-cont");
+      outer.appendChild(img);
+      img.src = "task-assets/bamboo-plant.png";
+      img.classList.add("img-class-bamboo");
+      outer.style.height = h + "px";
+      outer.style.width = w + "px";
+      outer.style.left = x + "px";
+      outer.style.top = y + "px";
+      outer.style.opacity = "1";
+      parentDiv.appendChild(outer);
+      return outer;
+    }
+
+    let bambooSpeedX = 2;
 
 
+    /***** GIVEN :: ******************************/
+    window.requestAnimationFrame(animate);
+    window.requestAnimationFrame(pulseAnimate);
+    /***** GIVEN :: ******************************/
+    let theta = 0
+
+
+    function pulseAnimate() {
+      let mappedNum = mapNumRange(Math.sin(theta), -1, 1, 5, 200)
+      rdPanda.style.width = (mappedNum) + "px";
+      rdPanda.style.height = (mappedNum) + "px";
+      theta += 0.01;
+
+      window.requestAnimationFrame(pulseAnimate)
+    }
+
+    const mapNumRange = (num, inMin, inMax, outMin, outMax) =>
+      ((num - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin
+    //the function that is called every frame
+    function animate() {
+      /**Part 2A
+       * ParseInt is needed because it strings so it is including the unit and adding it with the dogspeed and 
+       * concatenate the px to the dog speed
+       */
+      bamboo.style.left = parseInt(bamboo.style.left) + bambooSpeedX + "px"
+      bamboo2.style.left = parseInt(bamboo2.style.left) - bambooSpeedX + "px"
+
+
+
+
+      /**
+       * Part 2B
+       * Adding the checkEdgeDog so the dog doesn't go out of bounds
+       */
+      checkEdgesBamboo();
+
+
+
+
+      // const mapNumRange = (num, inMin, inMax, outMin, outMax) =>
+      //   ((num - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin
+
+      window.requestAnimationFrame(animate);
+    }
+    /***** GIVEN :: ******************************/
+    // the function to check if the dog is at the edge of the canvas and needs
+    //to switch direction
+    function checkEdgesBamboo() {
+      let boundaries = document.querySelector("#draw-d").getBoundingClientRect();
+      if (
+        parseInt(bamboo.style.left) > boundaries.width - parseInt(bamboo.style.width) ||
+        parseInt(bamboo.style.left) <= 0
+      )
+        bambooSpeedX *= -1;
+      //flip the image using scale...
+      if (bambooSpeedX > 0) {
+        bamboo.style.transform = 'scale(1,1)';
+      }
+      else {
+        bamboo.style.transform = 'scale(-1,1)';
+      }
+
+    }
   }
 }
