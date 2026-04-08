@@ -3,13 +3,48 @@ Please answer all the following questions - you can use the included files to he
 (some questions may overlap in their answers):
 /************************************************************************************************
 1/ Very briefly explain what the keyword "class" means concerning objects in javascript.
-2/ Briefly explain what keyword "constructor" (with regards to objects in javascript)  means and what is its function 
-3/ Briefly explain what keyword "new" (with regards to objects in javascript)  means and what is its function 
+    Class is the function that is called specifically to make the object. It is a template for creating objects. Any function inside 
+    the class knows that it is apart of that class. There is no need to include it in the beginning. JS files are able to pull objects
+    from it's class. Classes makes it easier to organize and edit objects without looking for it or without making a long file.
+
+2/ Briefly explain what keyword "constructor" (with regards to objects in javascript)  means and what is its function
+    The constructor is a special method used for creating and initializing objecct. The constructor is known as a method and not a function.
+    Although methods is an object properties that contain functions definition, it is not the same as a function. It contains functions that are 
+    stored as object properties.
+    Constructor basically constructs(create) the object when it is being asked. All the properties are located in a constructor 
+
+3/ Briefly explain what keyword "new" (with regards to objects in javascript)  means and what is its function
+    The new is used to created an object instance from a constructs. It is calling the constructor from an object.
+    When new is called a new empty object is created.
+
+
 4/ What does the keyword "this" refer to when used within a javascript class?
+    This is the binding variable for an object. Inside a constructor this is bound to the object being create.
+    
+
 5/ Starting from the "main.js" file, briefly explain how a single "planet", "sun" and "star" objects are created within this project folder
+   Staring from the main.js, the main.js is the js file that holds all the objects. It is space, it is the main place for all the different
+   objects, properties and elements will go into. "Planet", "sun" and "star" all have different js files as they are all objects. The planet object
+   is created with an x, y, size, color, and number od moons passing through it. By using the this, there is flexiblitity to modifiy what passes through
+   the planet object in the main js. While the sun and the star both have similar properties in which the x and y passes through them. It is makes 
+   it easy to set the position as the sizes of both the objects are set in there class. By separating the objects, it simplifies organization and allows
+   for flexiblitity incase something needs to be changed.
+    
+
 6/ What are the properties needed in order to create a "moon" object (within this project)
+    The moon class is needed in order to create the "moon" object in this project. However the moon 
+    properties are focused on the planet. Due to the fact that the "moon" object is revolving around the
+    planet, the object would need to be applied to the planet. The "moon" is showned when the planet is created
+    inside the main.js, it is in an array in which the number of moon passes through it's function. 
+
 7/ Briefly explain why one of the planets has two moons rotating around it and why the other has three
+    The reason one planet has 2 moon rotating around it compared to the second planet having three moon,
+    is due to the number of moons being passed through the planets. The first moon with the pink background
+    asked to have 2 moonn rotating around it while the second blue moon asked to have 3 moons.
+
 8/ Briefly explain how the moons positions are calculated given the planet they rotate around
+    The moon seems to be tied down to the planet. Looking at it's function, the angle to the parent
+    is being passed through along with the parent_planet, which means that it is attacted to the planet and will revolve around it**
 
 /**************************************************************************************/
 PART TWO: TO CREATE
