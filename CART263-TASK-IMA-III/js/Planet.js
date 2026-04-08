@@ -1,5 +1,5 @@
 class Planet {
-/* the function used to create an actual planet */
+  /* the function used to create an actual planet */
   constructor(x, y, size, color, numberMoons) {
     this.x = x;
     this.y = y;
@@ -14,13 +14,27 @@ class Planet {
     // be positioned around the planet
     for (let i = 0; i < numberMoons; i++) {
       let angle = (1 / (i + 1)) * Math.PI;
-      let radius = 60+ (i*30)
-      this.moons.push(new Moon(angle, 15, this, radius, Math.random()/50+.01));
+      let radius = 60 + (i * 30)
+      this.moons.push(new Moon(angle, 15, this, radius, Math.random() / 50 + .01));
     }
 
   }
-/* the function used to create the html elments that make a planet visible in the browser */
-  createHTMLelements(){
+  addCustomRadius() {
+    for (let i = 0; i < this.moons.length; i++) {
+      this.moons[i].radiusToParent = 200;
+    }
+  }
+
+  addCustomSpeed() {
+    for (let i = 0; i < this.moons.length; i++) {
+      this.moons[i].moon_speed = .3;
+
+
+    }
+
+  }
+  /* the function used to create the html elments that make a planet visible in the browser */
+  createHTMLelements() {
     this.html_element = document.createElement("div");
     this.html_element.classList.add("planet");
     this.html_element.style.left = this.x + "px";
@@ -35,7 +49,7 @@ class Planet {
 
   /* the function that will be called that will update the planets properties */
   update() {
-    for (let i = 0; i<this.moons.length; i++) {
+    for (let i = 0; i < this.moons.length; i++) {
       // this update function is in the moon class
       this.moons[i].update();
     }

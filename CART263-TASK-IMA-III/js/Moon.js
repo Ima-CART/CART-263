@@ -37,6 +37,7 @@ class Moon {
     this.start_angle += this.moon_speed;
   }
   updatePos() {
+    console.log(this.radiusToParent)
 
     //use trigonometry to calculate the placement of child planet
     // y = sin(startAngle)* r + cy

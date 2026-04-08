@@ -31,6 +31,9 @@ function go() {
     planets.push(new Planet(window.innerWidth / 16, window.innerHeight - 200, 80, possiblePlanetColors[3], 2))
 
 
+    planets[3].addCustomRadius()
+    planets[2].addCustomSpeed()
+
     //animation
     window.requestAnimationFrame(animate)
 
