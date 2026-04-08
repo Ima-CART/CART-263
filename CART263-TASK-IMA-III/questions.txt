@@ -1,0 +1,37 @@
+PART 1: TO ANWSER :
+Please answer all the following questions - you can use the included files to help:) 
+(some questions may overlap in their answers):
+/************************************************************************************************
+1/ Very briefly explain what the keyword "class" means concerning objects in javascript.
+2/ Briefly explain what keyword "constructor" (with regards to objects in javascript)  means and what is its function 
+3/ Briefly explain what keyword "new" (with regards to objects in javascript)  means and what is its function 
+4/ What does the keyword "this" refer to when used within a javascript class?
+5/ Starting from the "main.js" file, briefly explain how a single "planet", "sun" and "star" objects are created within this project folder
+6/ What are the properties needed in order to create a "moon" object (within this project)
+7/ Briefly explain why one of the planets has two moons rotating around it and why the other has three
+8/ Briefly explain how the moons positions are calculated given the planet they rotate around
+
+/**************************************************************************************/
+PART TWO: TO CREATE
+
+1/ a) Create two more planets and add to the planets array. 
+Make the first new one the third colour in the "possiblePlanetColors" array and 
+the second the fourth colour in the "possiblePlanetColors" array. 
+Position the planets wherever, just not overlapping with any other planets.
+
+1/ b) Add 4 moons to the first new planet, and 2 moons to the second new one. 
+Have them rotate around the new planets - you can choose the speed and radius.
+
+2/ Implement an event listener such that when one clicks on any moon, that moon will stop rotating.
+3/ Implement an event listener such that when one clicks on any planet - all moons associated with that planet will re-start rotating (if they were stopped)
+4/ Implement an event listener such that when one clicks anywhere in the window  - a new star will be created at that position 
+add it to the array, and allow it to animate just like the others.
+5/ Write the necessary script to implement a new type of object: a  "celestial flower" (fictitious) - these flowers can be any shape, size, colour etc..
+They need to float in space continuously (cannot be still)
+6/ Create two of these "celestial flowers" and have them float around.
+7/ Allow for one to add new celestial flowers to the window when one presses the space bar. Only allow for a maximum of 20 celestial flowers to exist at a time
+8/ Write the necessary script to implement a new type of object: a  "sun frog" (fictitious)  - Its purpose will be to sit on top of the sun and
+gaze out at the universe. Add one frog - Animate it in a novel way.
+
+
+

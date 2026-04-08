@@ -229,6 +229,7 @@ function go() {
         /**
          * Added a new variable for the dog in order to change the height, width and the id
          * Then push the new dog into the dog array
+         * 
          */
         let newDog = createDog(document.querySelector("#draw-b"), newX, newY, 50, 50, `dog_${numDogs}`)
 
