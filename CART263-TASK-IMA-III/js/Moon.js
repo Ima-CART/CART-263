@@ -15,7 +15,7 @@ class Moon {
   }
 
   /* the function used to create the html elements that make a moon visible in the browser */
-  createHTMLelements(){
+  createHTMLelements() {
     this.html_element = document.createElement("div");
     this.html_element.classList.add("moon");
     this.html_element.style.left = this.x + "px";
