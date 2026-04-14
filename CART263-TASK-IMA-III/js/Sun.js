@@ -4,6 +4,7 @@ class Sun {
     constructor(x, y) {
         this.x = x;
         this.y = y;
+        this.createHTMLElements()
 
     }
     /* the function used create the html elments that will display a sun */
