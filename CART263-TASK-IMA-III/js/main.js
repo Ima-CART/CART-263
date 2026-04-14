@@ -41,7 +41,7 @@ function go() {
 
     function createStar(e) {
         console.log(e.target)
-        let newStar = new Star(e.clientX, e.clientY)
+        let newStar = new Star(e.clientX, e.clientY) //creates a new star wherever the mouse is clicked
         stars.push(newStar)
 
 
