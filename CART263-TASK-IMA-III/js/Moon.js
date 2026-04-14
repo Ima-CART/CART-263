@@ -12,6 +12,9 @@ class Moon {
     this.color = parent_planet.color
     this.updatePos();
     this.createHTMLelements();
+
+
+
   }
 
   /* the function used to create the html elements that make a moon visible in the browser */
@@ -26,7 +29,23 @@ class Moon {
     this.html_element.style.background = this.color;
     document.querySelector("#sky-canvas").appendChild(this.html_element);
 
+    let moonSelf = this;
+    this.html_element.addEventListener("mousedown", stopRotation);
+
+    function stopRotation(e) {
+      console.log(e.target)
+      console.log(moonSelf)
+      moonSelf.moon_speed = 0
+
+
+
+    }
+
+
   }
+
+
+
 
   update() {
     this.updateAngle(); //update angle (for circular motion)
@@ -37,7 +56,7 @@ class Moon {
     this.start_angle += this.moon_speed;
   }
   updatePos() {
-    console.log(this.radiusToParent)
+    // console.log(this.radiusToParent)
 
     //use trigonometry to calculate the placement of child planet
     // y = sin(startAngle)* r + cy

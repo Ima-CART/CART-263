@@ -16,15 +16,18 @@ class Star {
     this.html_element.style.left = this.x + "px";
     this.html_element.style.top = this.y + "px";
     document.querySelector("#sky-canvas").appendChild(this.html_element);
+
+
+
   }
 
   /* the function used to animate a star */
 
   update() {
-    let val = mapRange(Math.sin(this.theta),-1,1, 2,5)
-    this.html_element.style.width = val+ "px";
-    this.html_element.style.height = val+ "px";
-    this.html_element.style.borderRadius = val+ "px";
+    let val = mapRange(Math.sin(this.theta), -1, 1, 2, 5)
+    this.html_element.style.width = val + "px";
+    this.html_element.style.height = val + "px";
+    this.html_element.style.borderRadius = val + "px";
     this.theta += 0.05;
   }
 

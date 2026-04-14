@@ -27,7 +27,7 @@ class Planet {
 
   addCustomSpeed() {
     for (let i = 0; i < this.moons.length; i++) {
-      this.moons[i].moon_speed = .3;
+      this.moons[i].moon_speed += 0.05;
 
 
     }
@@ -45,6 +45,24 @@ class Planet {
     this.html_element.style.borderRadius = this.size + "px";
     this.html_element.style.boxShadow = `0px 0px 40px 5px ${this.color}`;
     document.querySelector("#sky-canvas").appendChild(this.html_element);
+
+    let planetSelf = this
+    this.html_element.addEventListener("mousedown", startRotate)
+
+    function startRotate(e) {
+      console.log(e.target)
+      console.log(planetSelf)
+      let i = 0
+      if (planetSelf.moons[i].moon_speed === 0) {
+        for (let i = 0; i < planetSelf.moons.length; i++) {
+          planetSelf.moons[i].moon_speed += Math.random() / 50 + 0.01
+
+
+        }
+      }
+    }
+
+
   }
 
   /* the function that will be called that will update the planets properties */

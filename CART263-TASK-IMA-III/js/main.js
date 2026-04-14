@@ -34,6 +34,18 @@ function go() {
     planets[3].addCustomRadius()
     planets[2].addCustomSpeed()
 
+
+
+
+    window.addEventListener("mousedown", createStar)
+
+    function createStar(e) {
+        console.log(e.target)
+        let newStar = new Star(e.clientX, e.clientY)
+        stars.push(newStar)
+
+
+    }
     //animation
     window.requestAnimationFrame(animate)
 
