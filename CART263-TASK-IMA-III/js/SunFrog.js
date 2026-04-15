@@ -40,6 +40,8 @@ class SunFrog {
         this.x += Math.sin(this.angle) * 0.5;
         this.html_element.style.left = this.x + "px";
 
+        //
+
     }
 
 
