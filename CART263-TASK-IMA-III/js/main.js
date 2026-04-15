@@ -46,7 +46,7 @@ function go() {
     planets[3].addCustomRadius()
     planets[2].addCustomSpeed()
 
-    // celestialFlowers.push(new CelestialFlower(window.innerWidth / 8, window.innerHeight - 50, 50))
+    celestialFlowers.push(new CelestialFlower(window.innerWidth / 8, window.innerHeight - 50, 50))
 
 
 
