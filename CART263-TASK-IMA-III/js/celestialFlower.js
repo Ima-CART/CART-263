@@ -5,8 +5,8 @@ class CelestialFlower {
         this.y = y;
         this.size = size;
         this.color = color;
-        this.vx = (Math.random() * 1.5 + (1 - 0.5));
-        this.vy = (Math.random() + (1 - 0.8));
+        this.vx = (Math.random() - 0.5) * 1.5;
+        this.vy = (Math.random() - 0.5) * 1.5;
         this.createHTMLelements();
 
     }
@@ -31,21 +31,38 @@ class CelestialFlower {
      * Updating the postion of the objects
      */
     update() {
+        // this.x += this.vx;
+        // this.y += this.vy;
+        // this.html_element.style.left = this.x + "px";
+        // this.html_element.style.top = this.y + "px";
+
+        // /**
+        //  * If the celestialFlowers reached either the height or width 
+        //  * They will restart.
+        //  */
+        // if (this.x > window.innerWidth) {
+        //     this.x -= window.innerWidth;
+        // }
+        // if (this.y > window.innerHeight) {
+        //     this.y -= window.innerHeight;
+        // }
+
         this.x += this.vx;
         this.y += this.vy;
+
+
+        this.x += Math.sin(this.y * 0.01 + Date.now() * 0.001) * 0.3;
+        this.y += Math.cos(this.x * 0.01 + Date.now() * 0.001) * 0.3;
+
         this.html_element.style.left = this.x + "px";
         this.html_element.style.top = this.y + "px";
 
-        /**
-         * If the celestialFlowers reached either the height or width 
-         * They will restart.
-         */
-        if (this.x > window.innerWidth) {
-            this.x -= window.innerWidth;
-        }
-        if (this.y > window.innerHeight) {
-            this.y -= window.innerHeight;
-        }
+
+        if (this.x > window.innerWidth) this.x = 0;
+        if (this.x < 0) this.x = window.innerWidth;
+
+        if (this.y > window.innerHeight) this.y = 0;
+        if (this.y < 0) this.y = window.innerHeight;
     }
 
     // keyDownCreateCelestial(key) {

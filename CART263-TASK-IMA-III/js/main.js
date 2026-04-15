@@ -27,7 +27,7 @@ function go() {
     // add a Sun
     sun = new Sun(window.innerWidth / 2, window.innerHeight / 2);
 
-    sunFrog = new SunFrog(window.innerWidth - 797, window.innerHeight - 280, 50)
+    sunFrog = new SunFrog(window.innerWidth / 2, window.innerHeight - 449, 50)
     //add a planet
     planets.push(new Planet(window.innerWidth / 4, window.innerHeight / 4, 80, possiblePlanetColors[0], 2));
 
@@ -88,6 +88,8 @@ function go() {
         for (let i = 0; i < celestialFlowers.length; i++) {
             celestialFlowers[i].update()
         }
+        sunFrog.update()
+
         window.requestAnimationFrame(animate)
     }
 
