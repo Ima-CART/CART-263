@@ -5,7 +5,7 @@ class SunFrog {
         this.y = y;
         this.size = size;
         this.createHTMLelement();
-        this.angle = Math.random() * Math.PI * 2
+        this.angle = Math.random() * Math.PI * 2 //added angle for the animation and movement of the frog
 
     }
 
@@ -31,9 +31,11 @@ class SunFrog {
 
 
     }
-
+    /**
+     * The frog will be going back and forth on top of the moon
+     * Being in spacr he wander a bit away be always return to the sun
+     */
     update() {
-
         this.angle += 0.01;
         this.x += Math.sin(this.angle) * 0.5;
         this.html_element.style.left = this.x + "px";

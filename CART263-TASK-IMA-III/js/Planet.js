@@ -19,6 +19,11 @@ class Planet {
     }
 
   }
+
+  /**
+   * Added customs for the radius and the speed so they can be applied in the main
+   * It is possible to modify what is in a class by adding a new function and applying it to the main
+   */
   addCustomRadius() {
     for (let i = 0; i < this.moons.length; i++) {
       this.moons[i].radiusToParent = 200;
@@ -28,7 +33,6 @@ class Planet {
   addCustomSpeed() {
     for (let i = 0; i < this.moons.length; i++) {
       this.moons[i].moon_speed += 0.05;
-
 
     }
 
@@ -46,16 +50,25 @@ class Planet {
     this.html_element.style.boxShadow = `0px 0px 40px 5px ${this.color}`;
     document.querySelector("#sky-canvas").appendChild(this.html_element);
 
+    /**
+     * Event listener that restarts the rotation of the moon when a planet is clicked 
+     */
     let planetSelf = this
     this.html_element.addEventListener("mousedown", startRotate)
 
     function startRotate(e) {
       console.log(e.target)
       console.log(planetSelf)
+
       let i = 0
+      /**
+       * Since the moons are in an array used the if statement and i variable to specify
+       * that no matter which moon has stopped when the planet is click the rotation starts.
+       * Only problem if other moon were not stop their rotation will be faster.
+       */
       if (planetSelf.moons[i].moon_speed === 0) {
         for (let i = 0; i < planetSelf.moons.length; i++) {
-          planetSelf.moons[i].moon_speed += Math.random() / 50 + 0.01
+          planetSelf.moons[i].moon_speed += Math.random() / 50 + 0.01 //had the speed start at the regular speed in the moon planet loop 
 
 
         }

@@ -29,15 +29,16 @@ class Moon {
     this.html_element.style.background = this.color;
     document.querySelector("#sky-canvas").appendChild(this.html_element);
 
+    /**
+     * Added an event listener that when moon are click they would stop moving
+     */
     let moonSelf = this;
     this.html_element.addEventListener("mousedown", stopRotation);
 
     function stopRotation(e) {
       console.log(e.target)
       console.log(moonSelf)
-      moonSelf.moon_speed = 0
-
-
+      moonSelf.moon_speed = 0 // to stop the moon the speed became 0
 
     }
 
