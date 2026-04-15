@@ -2,12 +2,23 @@ window.onload = go;
 
 let stars = [];
 let planets = [];
-
+let celestialFlowers = []
 let sun = null;
+
+console.log(celestialFlowers)
 
 function go() {
     let possiblePlanetColors = ["#ce3ede", "#3e93de", "#66de3e", "#de663e", "#933ede", "#ebeef1"]
-
+    // let petalColor = {
+    //     r: 77,
+    //     g: 160,
+    //     b: 233,
+    // }
+    // let centreColor = {
+    //     r: 4,
+    //     g: 49,
+    //     b: 153,
+    // }
     //add 20 stars
     for (let i = 0; i < 20; i++) {
         stars.push(new Star(Math.random() * window.innerWidth, Math.random() * window.innerHeight))
@@ -31,8 +42,11 @@ function go() {
     planets.push(new Planet(window.innerWidth / 16, window.innerHeight - 200, 80, possiblePlanetColors[3], 2))
 
 
+
     planets[3].addCustomRadius()
     planets[2].addCustomSpeed()
+
+    // celestialFlowers.push(new CelestialFlower(window.innerWidth / 8, window.innerHeight - 50, 50))
 
 
 
