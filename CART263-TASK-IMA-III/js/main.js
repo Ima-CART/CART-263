@@ -46,7 +46,8 @@ function go() {
     planets[3].addCustomRadius()
     planets[2].addCustomSpeed()
 
-    celestialFlowers.push(new CelestialFlower(window.innerWidth / 8, window.innerHeight - 50, 50))
+    celestialFlowers.push(new CelestialFlower(window.innerWidth / 8, window.innerHeight - 50, 25))
+    celestialFlowers.push(new CelestialFlower(window.innerWidth / 8, window.innerHeight - 50, 25))
 
 
 
@@ -60,6 +61,17 @@ function go() {
 
 
     }
+
+
+    window.addEventListener("keydown", function handleKeydown(event) {
+        console.log(" ")
+        if (event.key === " ") {
+            let newCelestial = new CelestialFlower(event.key)
+            celestialFlowers.push(newCelestial)
+        }
+    })
+
+
     //animation
     window.requestAnimationFrame(animate)
 
@@ -70,6 +82,9 @@ function go() {
         }
         for (let i = 0; i < planets.length; i++) {
             planets[i].update()
+        }
+        for (let i = 0; i < celestialFlowers.length; i++) {
+            celestialFlowers[i].update()
         }
         window.requestAnimationFrame(animate)
     }

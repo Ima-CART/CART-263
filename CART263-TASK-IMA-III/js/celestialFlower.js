@@ -5,16 +5,10 @@ class CelestialFlower {
         this.y = y;
         this.size = size;
         this.color = color;
-        // this.petalColor = petalColor;
-        // this.centreColor = centreColor;
-        // this.vx = math.random() *5 + 1
-        // this.vy = (math.random() - 0.5) / 2
-        this.createHTMLelements()
-
-
-
-
-
+        this.vx = (Math.random() * 1.5 + (1 - 0.5));
+        this.vy = (Math.random() + (1 - 0.8));
+        this.createHTMLelements();
+        // let celestial = []
     }
 
     createHTMLelements() {
@@ -28,23 +22,43 @@ class CelestialFlower {
          * `` Can be used when declaring a value with px
          * Without it, the system gives an error
          */
-        this.html_element.style.borderRadius = `20px`;
-        this.html_element.style.boxShadow = `0px 0px 40px 5px rgb(109, 57, 251)`;
+        this.html_element.style.borderRadius = `10px`;
+        this.html_element.style.boxShadow = `0px 0px 40px 5px rgb(157, 126, 193)`;
         document.querySelector("#sky-canvas").appendChild(this.html_element);
+    }
+
+    /**
+     * Updating the postion of the objects
+     */
+    update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.html_element.style.left = this.x + "px";
+        this.html_element.style.top = this.y + "px";
+
+        /**
+         * If the celestialFlowers reached either the height or width 
+         * They will restart.
+         */
+        if (this.x > window.innerWidth) {
+            this.x -= window.innerWidth;
+        }
+        if (this.y > window.innerHeight) {
+            this.y -= window.innerHeight;
+        }
+    }
+
+    keyDownCreateCelestial(key) {
+        console.log("Spacebar pressed!")
+        if (key === " ") {
+            celestial.push(new CelestialFlower(x, y, size, color))
+            this.update()
+        }
+
+
 
 
     }
-
-
-    // update() {
-    //     this.x += this.vx;
-    //     this.y += thix.vy;
-
-
-
-    // }
-
-
 
 
 
