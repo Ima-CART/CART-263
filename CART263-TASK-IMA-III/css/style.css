@@ -56,3 +56,10 @@ body {
 
 
 }
+
+.sunFrog {
+    position: absolute;
+    /* background: rgb(75, 205, 101); */
+    box-shadow: 0px 0px 30px 10px rgb(54, 173, 78);
+
+}

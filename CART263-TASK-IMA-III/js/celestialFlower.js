@@ -8,7 +8,7 @@ class CelestialFlower {
         this.vx = (Math.random() * 1.5 + (1 - 0.5));
         this.vy = (Math.random() + (1 - 0.8));
         this.createHTMLelements();
-        // let celestial = []
+
     }
 
     createHTMLelements() {
@@ -22,7 +22,7 @@ class CelestialFlower {
          * `` Can be used when declaring a value with px
          * Without it, the system gives an error
          */
-        this.html_element.style.borderRadius = `10px`;
+        this.html_element.style.borderRadius = `8px`;
         this.html_element.style.boxShadow = `0px 0px 40px 5px rgb(157, 126, 193)`;
         document.querySelector("#sky-canvas").appendChild(this.html_element);
     }
@@ -48,17 +48,17 @@ class CelestialFlower {
         }
     }
 
-    keyDownCreateCelestial(key) {
-        console.log("Spacebar pressed!")
-        if (key === " ") {
-            celestial.push(new CelestialFlower(x, y, size, color))
-            this.update()
-        }
+    // keyDownCreateCelestial(key) {
+    //     console.log("Spacebar pressed!")
+    //     if (key === " ") {
+    //         celestial.push(new CelestialFlower(x, y, size, color))
+    //         this.update()
+    //     }
 
 
 
 
-    }
+    // }
 
 
 

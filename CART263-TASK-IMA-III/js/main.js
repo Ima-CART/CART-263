@@ -24,10 +24,10 @@ function go() {
         stars.push(new Star(Math.random() * window.innerWidth, Math.random() * window.innerHeight))
     }
 
-
     // add a Sun
     sun = new Sun(window.innerWidth / 2, window.innerHeight / 2);
 
+    sunFrog = new SunFrog(window.innerWidth - 797, window.innerHeight - 280, 50)
     //add a planet
     planets.push(new Planet(window.innerWidth / 4, window.innerHeight / 4, 80, possiblePlanetColors[0], 2));
 
@@ -46,8 +46,8 @@ function go() {
     planets[3].addCustomRadius()
     planets[2].addCustomSpeed()
 
-    celestialFlowers.push(new CelestialFlower(window.innerWidth / 8, window.innerHeight - 50, 25))
-    celestialFlowers.push(new CelestialFlower(window.innerWidth / 8, window.innerHeight - 50, 25))
+    celestialFlowers.push(new CelestialFlower(window.innerWidth / 8, window.innerHeight - 50, 20))
+    celestialFlowers.push(new CelestialFlower(window.innerWidth / 8, window.innerHeight - 50, 20))
 
 
 
@@ -66,8 +66,10 @@ function go() {
     window.addEventListener("keydown", function handleKeydown(event) {
         console.log(" ")
         if (event.key === " ") {
-            let newCelestial = new CelestialFlower(event.key)
-            celestialFlowers.push(newCelestial)
+            if (celestialFlowers.length < 20) {
+                let newCelestial = new CelestialFlower(Math.random() * window.innerWidth, Math.random() * window.innerHeight, 20)
+                celestialFlowers.push(newCelestial)
+            }
         }
     })
 
