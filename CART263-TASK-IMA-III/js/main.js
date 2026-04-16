@@ -2,9 +2,10 @@ window.onload = go;
 
 let stars = [];
 let planets = [];
-let celestial = []
+let celestialFlowers = []
 let sun = null;
 
+console.log(celestialFlowers)
 
 function go() {
     let possiblePlanetColors = ["#ce3ede", "#3e93de", "#66de3e", "#de663e", "#933ede", "#ebeef1"]
@@ -18,7 +19,7 @@ function go() {
     // add a Sun
     sun = new Sun(window.innerWidth / 2, window.innerHeight / 2);
     //add SunFrog
-    sunFrog = new SunFrog(window.innerWidth / 2, window.innerHeight - 285, 50)
+    sunFrog = new SunFrog(window.innerWidth / 2, window.innerHeight - 445, 50)
 
     //add a planet
     planets.push(new Planet(window.innerWidth / 4, window.innerHeight / 4, 80, possiblePlanetColors[0], 2));
@@ -39,8 +40,8 @@ function go() {
     planets[2].addCustomSpeed()
 
     //add celestialFlowers
-    celestial.push(new CelestialFlower(window.innerWidth / 8, window.innerHeight - 50, 20))
-    celestial.push(new CelestialFlower(window.innerWidth / 8, window.innerHeight - 50, 20))
+    celestialFlowers.push(new CelestialFlower(window.innerWidth / 8, window.innerHeight - 50, 20))
+    celestialFlowers.push(new CelestialFlower(window.innerWidth / 8, window.innerHeight - 50, 20))
 
 
 
@@ -87,8 +88,8 @@ function go() {
             planets[i].update()
         }
         //animation for celestial
-        for (let i = 0; i < celestial.length; i++) {
-            celestial[i].update()
+        for (let i = 0; i < celestialFlowers.length; i++) {
+            celestialFlowers[i].update()
         }
         //animation for sunFrog
         sunFrog.update()
