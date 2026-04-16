@@ -19,7 +19,7 @@ function go() {
     // add a Sun
     sun = new Sun(window.innerWidth / 2, window.innerHeight / 2);
     //add SunFrog
-    sunFrog = new SunFrog(window.innerWidth / 2, window.innerHeight - 285, 50)
+    sunFrog = new SunFrog(window.innerWidth / 2, window.innerHeight - 445, 50)
 
     //add a planet
     planets.push(new Planet(window.innerWidth / 4, window.innerHeight / 4, 80, possiblePlanetColors[0], 2));
