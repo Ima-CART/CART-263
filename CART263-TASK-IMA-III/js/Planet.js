@@ -60,14 +60,15 @@ class Planet {
       console.log(e.target)
       console.log(planetSelf)
 
-      let i = 0
+
       /**
        * Since the moons are in an array used the if statement and i variable to specify
        * that no matter which moon has stopped when the planet is click the rotation starts.
        * Only problem if other moon were not stop their rotation will be faster.
        */
-      if (planetSelf.moons[i].moon_speed === 0) {
-        for (let i = 0; i < planetSelf.moons.length; i++) {
+
+      for (let i = 0; i < planetSelf.moons.length; i++) {
+        if (planetSelf.moons[i].moon_speed === 0) {
           planetSelf.moons[i].moon_speed += Math.random() / 50 + 0.01 //had the speed start at the regular speed in the moon planet loop 
 
 

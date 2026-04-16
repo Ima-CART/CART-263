@@ -76,12 +76,8 @@ class CelestialFlower {
         if (this.y < 0) this.y = window.innerHeight;
     }
 
-    // keyDownCreateCelestial(key) {
-    //     console.log("Spacebar pressed!")
-    //     if (key === " ") {
-    //         celestial.push(new CelestialFlower(x, y, size, color))
-    //         this.update()
-    //     }
+    // ke
+
 
 
 
