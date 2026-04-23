@@ -1,7 +1,7 @@
 window.onload = go;
 /* function that runs on window load */
 let snowFlakes = [];
-let wind = 1;
+let wind = 1;//a constant influence that will change over time
 function go() {
     console.log("here we go")
 
