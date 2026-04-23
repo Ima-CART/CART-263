@@ -1,0 +1,41 @@
+    /** Winter Simulation**/
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    #winter-canvas {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+
+
+    }
+
+    .sky {
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        margin: 0;
+        /*Z-index stack the classes.
+I wanted the sky in the background*/
+        z-index: 0;
+
+    }
+
+    .ground {
+        width: 100vw;
+        height: calc(100vh - 175px);
+        position: absolute;
+        padding: 0;
+        margin: 0;
+        z-index: 1;
+    }
+
+
+
+    .snowflake {
+        position: absolute;
+        background: white;
+
+    }

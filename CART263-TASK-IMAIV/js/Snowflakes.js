@@ -18,10 +18,23 @@ class Snowflakes {
         this.html_element.style.top = this.y + "px";
         this.html_element.style.height = this.size + "px";
         this.html_element.style.weight = this.size + "px";
-
+        document.querySelector("#winter-canva").appendChild(this.html_element);
 
     }
 
+    update() {
+
+        this.y += this.speed;
+        this.x += this.drift;
+
+        // reset when off screen
+        if (this.y > canvas.height) {
+            this.y = 0;
+            this.x = Math.random() * canvas.width;
+        }
+
+
+    }
 
 
 

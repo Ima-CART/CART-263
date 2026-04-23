@@ -59,30 +59,5 @@
     margin: 8px;
     padding: 2px;
 
-    .sky {
-        width: 100wv;
-        height: 400px;
-        position: relative;
-        padding: 0;
-        margin: 0;
-
-    }
-
-    .ground {
-        width: 100vw;
-        height: calc(100vh - 400px);
-        position: relative;
-        padding: 0;
-        margin: 0;
-
-    }
-
-    .snowflake {
-        position: absolute;
-        background: white;
-
-    }
-
-
 
 }
