@@ -1,7 +1,11 @@
 window.onload = go;
 /* function that runs on window load */
 let snowFlakes = [];
-let wind = 1;//a constant influence that will change over time
+let wind = 0;//a constant influence that will change over time
+let minWind = -2;
+let maxWind = 2;
+let windDirection = 1;
+
 function go() {
     console.log("here we go")
 
@@ -58,20 +62,17 @@ function go() {
     createBackgroundForWinter()
 
 
-    // function createWind() {
-
-
-    // }
-
-
 
     //animation
     window.requestAnimationFrame(animate)
     function animate() {
         for (let i = 0; i < snowFlakes.length; i++) {
             snowFlakes[i].update();
-
         }
+        if (wind > maxWind) { windDirection = -1 }
+        if (wind < minWind) { windDirection = 1 }
+
+        wind += .01 * windDirection;
         window.requestAnimationFrame(animate);
     }
 
