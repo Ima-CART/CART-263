@@ -1,7 +1,7 @@
 window.onload = go;
 /* function that runs on window load */
 let snowFlakes = [];
-let wind = 0.5
+let wind = 1;
 function go() {
     console.log("here we go")
 
@@ -17,6 +17,7 @@ function go() {
         skyDiv: document.createElement("div"),
     }
 
+    /**Ground Object */
     let ground = {
         // The color of the sky (background)
         groundColor: {
@@ -56,6 +57,11 @@ function go() {
 
     createBackgroundForWinter()
 
+
+    // function createWind() {
+
+
+    // }
 
 
 

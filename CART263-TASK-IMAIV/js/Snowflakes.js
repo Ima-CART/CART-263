@@ -25,6 +25,7 @@ class SnowFlakes {
 
         this.y += Math.random() * this.speed;
         // this.x += this.drift;
+        this.x += wind// uses the winds that has been defined in the main.js
 
         this.html_element.style.left = this.x + "px";
         this.html_element.style.top = this.y + "px";
