@@ -1,4 +1,4 @@
-class Snowflakes {
+class SnowFlakes {
     constructor(x, y, size, speed, drift) {
         this.x = x;
         this.y = y;
@@ -17,25 +17,27 @@ class Snowflakes {
         this.html_element.style.left = this.x + "px";
         this.html_element.style.top = this.y + "px";
         this.html_element.style.height = this.size + "px";
-        this.html_element.style.weight = this.size + "px";
-        document.querySelector("#winter-canva").appendChild(this.html_element);
+        this.html_element.style.width = this.size + "px";
+        this.html_element.style.borderRadius = `8px`
+        document.querySelector("#winter-canvas").appendChild(this.html_element);
 
     }
 
     update() {
 
-        this.y += this.speed;
-        this.x += this.drift;
+        this.y += Math.random() * this.speed;
+        // this.x += this.drift;
 
+        this.html_element.style.left = this.x + "px";
+        this.html_element.style.top = this.y + "px";
         // reset when off screen
-        if (this.y > canvas.height) {
+        if (this.y > window.innerHeight) {
             this.y = 0;
-            this.x = Math.random() * canvas.width;
+            this.x = Math.random() * window.innerWidth;
         }
 
 
     }
-
 
 
 

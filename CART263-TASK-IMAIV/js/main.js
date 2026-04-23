@@ -1,6 +1,6 @@
 window.onload = go;
 /* function that runs on window load */
-let snowflakes = [];
+let snowFlakes = [];
 
 function go() {
     console.log("here we go")
@@ -9,9 +9,9 @@ function go() {
     let sky = {
         // The color of the sky (background)
         skyColor: {
-            r: 245,
-            g: 245,
-            b: 245,
+            r: 154,
+            g: 215,
+            b: 255,
         },
         //the sky element
         skyDiv: document.createElement("div"),
@@ -28,8 +28,11 @@ function go() {
         groundDiv: document.createElement("div"),
     }
 
-
-
+    //add snowflakes
+    console.log(snowFlakes)
+    for (let i = 0; i < 20; i++) {
+        snowFlakes.push(new SnowFlakes(Math.random() * window.innerWidth, Math.random() * innerHeight, 10, 5, 5))
+    }
     function createBackgroundForWinter() {
         ground.groundDiv.classList.add("ground");
         ground.groundDiv.style.background = `rgb(
@@ -56,7 +59,15 @@ function go() {
 
 
 
+    //animation
+    window.requestAnimationFrame(animate)
+    function animate() {
+        for (let i = 0; i < snowFlakes.length; i++) {
+            snowFlakes[i].update();
 
+        }
+        window.requestAnimationFrame(animate);
+    }
 
 
 

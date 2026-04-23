@@ -8,6 +8,7 @@
         width: 100vw;
         height: 100vh;
         position: relative;
+        overflow: hidden;
 
 
     }
@@ -25,17 +26,21 @@ I wanted the sky in the background*/
 
     .ground {
         width: 100vw;
-        height: calc(100vh - 175px);
+        height: 175px;
         position: absolute;
         padding: 0;
         margin: 0;
+        /*There need to be an indication of top and bottom.
+        In general when drawing or using height everything start from the top*/
+        bottom: 0;
         z-index: 1;
+
     }
 
 
 
     .snowflake {
         position: absolute;
-        background: white;
-
+        background: rgb(255, 255, 255);
+        z-index: 10
     }
