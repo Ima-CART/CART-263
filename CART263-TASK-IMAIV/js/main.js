@@ -1,7 +1,7 @@
 window.onload = go;
 /* function that runs on window load */
 let snowFlakes = [];
-
+let wind = 0.5
 function go() {
     console.log("here we go")
 
