@@ -5,8 +5,6 @@ class SnowFlakes {
         this.size = size;
         this.speed = speed;
         this.drift = drift;
-        this.vx = this.vx;
-        this.vy = this.vy;
         this.createHTMLelement();
 
     }
