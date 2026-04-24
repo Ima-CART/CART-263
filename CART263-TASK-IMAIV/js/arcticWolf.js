@@ -3,7 +3,12 @@ class ArcticWolf {
         this.x = x;
         this.y = y;
         this.size = size;
-        this.vx = -1
+        this.vx = -1;
+        this.isJumping = false;  // Track if the wolf is jumping
+        this.jumpHeight = 300;
+        this.jumpSpeed = 5;
+
+
         this.createHTMLelement();
     }
 
@@ -25,6 +30,43 @@ class ArcticWolf {
 
     }
 
+    // Handle key press for jumping
+    handleKeyDownInArcticFox(key) {
+        if (key === "ArrowUp" && !this.isJumping) {
+            this.isJumping = true; // Set the flag that the wolf is jumping
+            this.jump();  // Start the jump
+        }
+    }
+
+    // Jumping function: Move the wolf up until maxHeight
+    jump() {
+        const maxHeight = this.y - this.jumpHeight;  // Calculate maximum jump height
+
+        let jumpInterval = setInterval(() => {
+            if (this.y > maxHeight) {
+                this.y -= this.jumpSpeed;  // Move upwards by jumpSpeed
+                this.html_element.style.top = this.y + "px";  // Update position
+            } else {
+                clearInterval(jumpInterval);  // Stop the jump once the max height is reached
+                this.fall();  // Begin falling down
+            }
+        }, 16);  // 60 FPS (16ms per frame)
+    }
+
+    // Fall back down to the ground after reaching max height
+    fall() {
+        let fallInterval = setInterval(() => {
+            if (this.y < 500) {
+                this.y += this.jumpSpeed;  // Move downwards
+                this.html_element.style.top = this.y + "px";  // Update position
+            } else {
+                clearInterval(fallInterval);  // Stop falling when back at the ground
+                this.isJumping = false;  // Allow the wolf to jump again
+            }
+        }, 16);  // 60 FPS
+    }
+
+
     update() {
         // this.x -= 1
         /**The arctic wolf restarts when it reaches 0 */
@@ -33,7 +75,7 @@ class ArcticWolf {
         //     // Reset position to the right side
         //     this.x = window.innerWidth;
         // }
-
+        // Move the wolf horizontally
         // Check if the wolf has reached the left or right edge
         // Move the wolf in the current direction
         this.x += this.vx;

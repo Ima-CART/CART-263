@@ -120,6 +120,8 @@ function go() {
          */
         for (let i = 0; i < snowFlakes.length; i++) { snowFlakes[i].handleKeyDownInSnow(event.key); }
 
+        //handle the controls for the fox
+        arcticWolf.handleKeyDownInArcticFox(event.key);
     })
 
 
