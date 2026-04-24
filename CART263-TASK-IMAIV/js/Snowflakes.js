@@ -9,6 +9,10 @@ class SnowFlakes {
 
     }
 
+
+
+
+
     createHTMLelement() {
         this.html_element = document.createElement("div");
         this.html_element.classList.add("snowflake");
