@@ -54,6 +54,10 @@ function go() {
         tree.push(new Tree(0, 445, 230))
     }
 
+
+    //add Arctic Wolf
+    arcticWolf = new ArcticWolf(window.innerWidth - 200, 500, 180)
+
     function createBackgroundForWinter() {
         ground.groundDiv.classList.add("ground");
         ground.groundDiv.style.background = `rgb(
@@ -141,6 +145,8 @@ function go() {
          */
         // wind += .01 * windDirection;
         window.requestAnimationFrame(animate);
+
+        arcticWolf.update();
     }
 
 
