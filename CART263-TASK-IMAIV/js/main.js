@@ -3,6 +3,7 @@ window.onload = go;
 let centerX = window.innerWidth / 2;
 let mouseX = 0;
 let snowFlakes = [];
+let tree = [];
 let wind = 0;//a constant influence that will change over time
 /**Add the wind direction and it's limit
  * I wanted the snowflakes to oscillate but at the same time
@@ -48,8 +49,10 @@ function go() {
     //add the snowman
     snowman = new SnowMan(window.innerWidth / 2, 500, 200)
 
-
-
+    //add tree
+    for (let i = 0; i < 4; i++) {
+        tree.push(new Tree(0, 400, 200))
+    }
 
     function createBackgroundForWinter() {
         ground.groundDiv.classList.add("ground");
