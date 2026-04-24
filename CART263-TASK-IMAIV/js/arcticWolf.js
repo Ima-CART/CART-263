@@ -9,6 +9,7 @@ class ArcticWolf {
         this.jumpSpeed = 5;
 
 
+
         this.createHTMLelement();
     }
 
@@ -25,6 +26,16 @@ class ArcticWolf {
         this.img_element.style.width = "100%";
         this.img_element.style.height = "100%";
         this.html_element.append(this.img_element);
+
+        // // Apply night mode effect (if night mode is true)
+        // if (this.isNight) {
+        //     this.html_element.style.opacity = 0.8;  // Slightly transparent to blend with night
+        //     this.html_element.style.boxShadow = "0 0 20px rgba(255, 255, 255, 0.5)";  // Soft glow effect
+        // } else {
+        //     this.html_element.style.opacity = 1;  // Fully visible in the day
+        //     this.html_element.style.boxShadow = "none";  // Remove glow effect
+        // }
+
 
         document.querySelector("#winter-canvas").appendChild(this.html_element);
 
@@ -66,8 +77,20 @@ class ArcticWolf {
         }, 16);  // 60 FPS
     }
 
-
+    applyNightMode() {
+        if (!isNight) {
+            // Apply night mode styles: dim the wolf, add glow effect
+            this.html_element.style.opacity = 0.8;  // Slight transparency to blend with night
+            this.html_element.style.borderRadius = "500px"
+            this.html_element.style.boxShadow = "0 0 50px rgba(255, 255, 255, 0.5)"; // Soft glow effect
+        } else {
+            // Reset back to normal during the day
+            this.html_element.style.opacity = 1;
+            this.html_element.style.boxShadow = "none"; // Remove glow effect
+        }
+    }
     update() {
+
         // this.x -= 1
         /**The arctic wolf restarts when it reaches 0 */
         // // Check if the wolf has moved off the screen on the left side

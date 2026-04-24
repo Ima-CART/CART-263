@@ -1,5 +1,6 @@
 window.onload = go;
 /* function that runs on window load */
+let isNight = false;
 let centerX = window.innerWidth / 2;
 let mouseX = 0;
 let snowFlakes = [];
@@ -75,7 +76,22 @@ function go() {
         )`;
         document.querySelector("#winter-canvas").appendChild(sky.skyDiv);
 
+        // Update sky color based on whether it's day or night
+        if (isNight) {
+            sky.skyColor.r = 3;
+            sky.skyColor.g = 31;
+            sky.skyColor.b = 77;  // Dark blue for night
+        } else {
+            sky.skyColor.r = 154;
+            sky.skyColor.g = 215;
+            sky.skyColor.b = 255;  // Light blue for day
+        }
+        // if (isNight = true) {
+        //     sky.skyColor.r = 3,
+        //         sky.skyColor.g = 31,
+        //         sky.skyColor.b = 77
 
+        // }
     }
 
     createBackgroundForWinter()
@@ -122,6 +138,20 @@ function go() {
 
         //handle the controls for the fox
         arcticWolf.handleKeyDownInArcticFox(event.key);
+
+        // if (key === "n") {
+        //     isNight = true(sky.skyColor.r = 3,
+        //         sky.skyColor.g = 31,
+        //         sky.skyColor.b = 77
+        //     )
+        // }
+        if (event.key === 'n' || event.key === 'N') {
+            // Toggle isNight
+            isNight = !isNight;
+            // Update the background color after toggling isNight
+            createBackgroundForWinter();
+            arcticWolf.applyNightMode();
+        }
     })
 
 
