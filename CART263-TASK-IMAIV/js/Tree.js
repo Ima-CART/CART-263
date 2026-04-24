@@ -1,6 +1,6 @@
 class Tree {
     constructor(x, y, size) {
-        this.x = Math.random() * window.innerWidth;
+        this.x = (Math.random() * window.innerWidth) - 100;
         this.y = y;
         this.size = size;
         this.createHTMLelement();

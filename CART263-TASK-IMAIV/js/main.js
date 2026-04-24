@@ -50,8 +50,8 @@ function go() {
     snowman = new SnowMan(window.innerWidth / 2, 500, 200)
 
     //add tree
-    for (let i = 0; i < 4; i++) {
-        tree.push(new Tree(0, 400, 200))
+    for (let i = 0; i < 5; i++) {
+        tree.push(new Tree(0, 445, 230))
     }
 
     function createBackgroundForWinter() {

@@ -11,7 +11,7 @@ class SnowFlakes {
         this.velocityX = 0;
         this.velocityY = 0;
         this.createHTMLelement();
-        this.frozen = false;
+
 
     }
 
