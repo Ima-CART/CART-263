@@ -44,6 +44,13 @@ function go() {
     for (let i = 0; i < 20; i++) {
         snowFlakes.push(new SnowFlakes(Math.random() * window.innerWidth, Math.random() * innerHeight, 0, 0, 0))
     }
+
+    //add the snowman
+    snowman = new SnowMan(window.innerWidth / 2, 500, 200)
+
+
+
+
     function createBackgroundForWinter() {
         ground.groundDiv.classList.add("ground");
         ground.groundDiv.style.background = `rgb(
@@ -113,7 +120,7 @@ function go() {
     window.requestAnimationFrame(animate)
     function animate() {
         for (let i = 0; i < snowFlakes.length; i++) {
-            snowFlakes[i].update();
+            snowFlakes[i].update(snowman);//pass throught the snowman so that snowflake can interact
         }
         updateWindDirection();
 

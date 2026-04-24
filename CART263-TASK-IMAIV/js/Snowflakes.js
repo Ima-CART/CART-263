@@ -11,6 +11,7 @@ class SnowFlakes {
         this.velocityX = 0;
         this.velocityY = 0;
         this.createHTMLelement();
+        this.frozen = false;
 
     }
 
@@ -78,11 +79,38 @@ class SnowFlakes {
 
     }
 
-    update() {
+    /**
+     * Add collison to the snowflake
+     * If the snowflakes collides with the snowman it disappears
+     */
+    //Function is passing through the snowman so flake can recognise the snowman
+    checkCollisionWithSnowman(snowman) {
+        // Check if the snowflake is inside the snowman's area
+        if (
+            this.x > snowman.x &&
+            this.x < snowman.x + snowman.size &&
+            this.y > snowman.y &&
+            this.y < snowman.y + snowman.size
+        ) {
+            return true;  // Snowflake is inside the snowman area
+        }
+        return false;  // No collision
+    }
+
+    //passing through the snowman
+    update(snowman) {
 
         this.y += Math.random() * this.speed;
         this.x += this.drift + wind;
         // this.x += wind// uses the winds that has been defined in the main.js
+
+        // Check for collision with the snowman
+        if (this.checkCollisionWithSnowman(snowman)) {
+            // Handle the collision
+            this.x = snowman.x + snowman.size / 2 - this.size / 2; // Align it to the snowman's center
+            this.y = snowman.y + snowman.size;  // Place it on top of the snowman (or inside it)
+            return;  // Don't let the snowflake continue falling
+        }
 
         this.html_element.style.left = this.x + "px";
         this.html_element.style.top = this.y + "px";
