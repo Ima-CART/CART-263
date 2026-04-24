@@ -20,7 +20,7 @@ class SnowFlakes {
 
     createHTMLelement() {
         this.html_element = document.createElement("div");
-        this.html_element.classList.add("snowflake");
+        this.html_element.classList.add("snowFlake");
         this.html_element.style.left = this.x + "px";
         this.html_element.style.top = this.y + "px";
         this.html_element.style.height = this.size + "px";
