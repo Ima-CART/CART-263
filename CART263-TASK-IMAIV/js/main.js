@@ -42,7 +42,7 @@ function go() {
     //add snowflakes
     console.log(snowFlakes)
     for (let i = 0; i < 20; i++) {
-        snowFlakes.push(new SnowFlakes(Math.random() * window.innerWidth, Math.random() * innerHeight, 10, 5, 5))
+        snowFlakes.push(new SnowFlakes(Math.random() * window.innerWidth, Math.random() * innerHeight, 0, 0, 0))
     }
     function createBackgroundForWinter() {
         ground.groundDiv.classList.add("ground");
@@ -90,11 +90,25 @@ function go() {
     window.addEventListener("mousedown", createSnowFlakes)
 
     function createSnowFlakes(e) {
-        let newSnowFlakes = new SnowFlakes(Math.random() * window.innerWidth, 0, 10, 5, 5);
+        let newSnowFlakes = new SnowFlakes(Math.random() * window.innerWidth, 0, 0, 0, 0);
         // let newSnowFlakes = new SnowFlakes(e.clientX, e.clientY)
         snowFlakes.push(newSnowFlakes)
 
     }
+
+    /**
+     * Add Event listener for the wind drift using the keyboard
+     */
+    window.addEventListener("keydown", function handleKeyDown(event) {
+        /** This does not work since I am calling the changes in the array 
+         * Not the individual snow flakes
+         *  snowFlakes.handleKeyDownInSnow(event.key) 
+         */
+        for (let i = 0; i < snowFlakes.length; i++) { snowFlakes[i].handleKeyDownInSnow(event.key); }
+
+    })
+
+
     //animation
     window.requestAnimationFrame(animate)
     function animate() {
