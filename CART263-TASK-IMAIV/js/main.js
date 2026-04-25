@@ -48,7 +48,7 @@ function go() {
     }
 
     //add the snowman
-    snowMan = new SnowMan(window.innerWidth / 2, 500, 200)
+    snowMan = new SnowMan(window.innerWidth / 2 - 100, 440, 250)
 
     //add tree
     for (let i = 0; i < 5; i++) {
@@ -58,7 +58,9 @@ function go() {
 
     //add Arctic Wolf
     arcticWolf = new ArcticWolf(window.innerWidth - 200, 500, 180)
-
+    /**
+     * Created a function to render or create the background
+     */
     function createBackgroundForWinter() {
         ground.groundDiv.classList.add("ground");
         ground.groundDiv.style.background = `rgb(
@@ -98,7 +100,7 @@ function go() {
 
     createBackgroundForWinter()
 
-    /**Create an new function to apply Nightmode */
+    /**Created a new function to apply Nightmode */
     function winterNightMode() {
 
         //         // Update sky color based on whether it's day or night
@@ -119,17 +121,33 @@ function go() {
         ${sky.skyColor.b}
     )`;
 
+        /**
+         * Added the mode changes for the classes into this function
+         */
         arcticWolf.applyNightMode(isNight);
+
         snowMan.applyNightMode(isNight);
         for (let i = 0; i < tree.length; i++) {
             tree[i].applyNightMode(isNight); // Apply night mode to each tree
         }
 
         for (let i = 0; i < snowFlakes.length; i++) {
-            snowFlakes[i].applyNightMode(isNight);
+            snowFlakes[i].applyNightMode(isNight);//Apply night mode to each snowflake
         }
     }
 
+    function updateWindDirection() {
+        let windFactor = (mouseX - centerX) / centerX; // How far from center the mouse is
+
+
+        windDirection = windFactor * maxWind;
+
+        /**  Optionally, clamp the wind direction to a max and min
+         * I didn't want the wind to go on forever I wanted it to stop at the max
+         * */
+        if (windDirection > maxWind) windDirection = maxWind;
+        if (windDirection < minWind) windDirection = minWind;
+    }
 
 
     //add mouse event listener
@@ -141,16 +159,6 @@ function go() {
 
     }
 
-    function updateWindDirection() {
-        let windFactor = (mouseX - centerX) / centerX; // How far from center the mouse is
-
-
-        windDirection = windFactor * maxWind;
-
-        // Optionally, clamp the wind direction to a max and min
-        if (windDirection > maxWind) windDirection = maxWind;
-        if (windDirection < minWind) windDirection = minWind;
-    }
 
     // second mouse listner when click a new now appears
     window.addEventListener("mousedown", createSnowFlakes)

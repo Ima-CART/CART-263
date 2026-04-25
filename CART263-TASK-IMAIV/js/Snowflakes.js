@@ -2,9 +2,9 @@ class SnowFlakes {
     constructor(x, y, size, speed, drift) {
         this.x = x;
         this.y = y;
-        this.size = Math.random() * 5 + 5; //adding random sizes
-        this.speed = Math.random() * 2 + 1;//adding randomness
-        this.drift = (Math.random() - 0.5) * 2
+        this.size = Math.random() * 5 + 5; //added random sizes
+        this.speed = Math.random() * 2 + 1;//added randomness
+        this.drift = (Math.random() - 0.5) * 2//added randomness
         // this.size = size;
         // this.speed = speed;
         // this.drift = drift;
@@ -57,7 +57,7 @@ class SnowFlakes {
             // Remove the clicked snowflake from the array
             snowFlakes = snowFlakes.filter(snowflakes => snowflakes !== snowSelf);
 
-            // Optionally, you can also hide or remove the clicked snowflake element from the DOM
+            //Hiding the actually snowflake that burst
             snowSelf.html_element.style.display = "none";
 
 
@@ -68,16 +68,21 @@ class SnowFlakes {
     // Apply night mode effect
     applyNightMode(isNight) {
         if (isNight) {
-            // Apply darker or glowing effect when night
+            // Apply darker and glowing effect when night
             this.html_element.style.filter = "brightness(0.5)";
             this.html_element.style.boxShadow = "0 0 30px 5px rgba(254, 255, 255, 0.61)";
             // this.html_element.style.borderRadius = this.size
         } else {
             // Reset the effect to normal brightness during the day
             this.html_element.style.filter = "brightness(1)";
+            this.html_element.style.boxShadow = "none"
         }
     }
 
+    /**
+     * The keyboard will handle the drift. 
+     * The snow will drift see up or slow down depending on the drift value
+     */
     handleKeyDownInSnow(key) {
 
 

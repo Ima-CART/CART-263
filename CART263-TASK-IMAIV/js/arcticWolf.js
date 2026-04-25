@@ -27,6 +27,7 @@ class ArcticWolf {
         this.img_element.style.height = "100%";
         this.html_element.append(this.img_element);
 
+        /**Does not belong here */
         // // Apply night mode effect (if night mode is true)
         // if (this.isNight) {
         //     this.html_element.style.opacity = 0.8;  // Slightly transparent to blend with night
@@ -51,8 +52,15 @@ class ArcticWolf {
 
     // Jumping function: Move the wolf up until maxHeight
     jump() {
-        const maxHeight = this.y - this.jumpHeight;  // Calculate maximum jump height
+        let maxHeight = this.y - this.jumpHeight;  // Calculate maximum jump height
 
+        /**
+         * Created a setInterval to have the fox move up inframes,
+         * When it reaches the max it goes back down.
+         * Jump is either a animation or a setInterval to not have the y go up constant when keyboard pressed
+         * I thought changing the Y would be enough, but it was a bit more complicated. It was the biggest challenge to 
+         * understand. Made two function for when it goes up and when it does downe.
+         */
         let jumpInterval = setInterval(() => {
             if (this.y > maxHeight) {
                 this.y -= this.jumpSpeed;  // Move upwards by jumpSpeed

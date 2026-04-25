@@ -38,7 +38,7 @@ I wanted the sky in the background*/
     }
 
 
-
+    /* Styles for the objects  */
     .snowFlake {
         position: absolute;
         background: rgb(255, 255, 255);
@@ -47,7 +47,7 @@ I wanted the sky in the background*/
 
     .snowMan {
         position: absolute;
-        z-index: 2;
+        z-index: 3;
 
     }
 
@@ -58,5 +58,5 @@ I wanted the sky in the background*/
 
     .arcticWolf {
         position: absolute;
-        z-index: 3;
+        z-index: 2;
     }

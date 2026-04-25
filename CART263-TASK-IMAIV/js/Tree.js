@@ -26,7 +26,10 @@ class Tree {
 
 
     }
-
+    /**
+     * Apply night mode. Same concept as the rest of the object
+     * Tree will be darker when it is night
+     */
     applyNightMode(isNight) {
 
         if (isNight) {
