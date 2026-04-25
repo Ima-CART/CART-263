@@ -48,16 +48,16 @@ function go() {
     }
 
     //add the snowman
-    snowMan = new SnowMan(window.innerWidth / 2 - 100, 400, 250)
+    snowMan = new SnowMan(window.innerWidth / 2 - 100, 440, 250)
 
     //add tree
     for (let i = 0; i < 5; i++) {
-        tree.push(new Tree(0, 400, 230))
+        tree.push(new Tree(0, 445, 230))
     }
 
 
     //add Arctic Wolf
-    arcticWolf = new ArcticWolf(window.innerWidth - 200, 400, 180)
+    arcticWolf = new ArcticWolf(window.innerWidth - 200, 500, 180)
     /**
      * Created a function to render or create the background
      */
