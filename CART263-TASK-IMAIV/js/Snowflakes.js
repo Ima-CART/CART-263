@@ -84,13 +84,13 @@ class SnowFlakes {
      * If the snowflakes collides with the snowman it disappears
      */
     //Function is passing through the snowman so flake can recognise the snowman
-    checkCollisionWithSnowman(snowman) {
+    checkCollisionWithSnowman(snowMan) {
         // Check if the snowflake is inside the snowman's area
         if (
-            this.x > snowman.x &&
-            this.x < snowman.x + snowman.size &&
-            this.y > snowman.y &&
-            this.y < snowman.y + snowman.size
+            this.x > snowMan.x &&
+            this.x < snowMan.x + snowMan.size &&
+            this.y > snowMan.y &&
+            this.y < snowMan.y + snowMan.size
         ) {
             return true;  // Snowflake is inside the snowman area
         }
@@ -98,17 +98,17 @@ class SnowFlakes {
     }
 
     //passing through the snowman
-    update(snowman) {
+    update(snowMan) {
 
         this.y += Math.random() * this.speed;
         this.x += this.drift + wind;
         // this.x += wind// uses the winds that has been defined in the main.js
 
         // Check for collision with the snowman
-        if (this.checkCollisionWithSnowman(snowman)) {
+        if (this.checkCollisionWithSnowman(snowMan)) {
             // Handle the collision
-            this.x = snowman.x + snowman.size / 2 - this.size / 2; // Align it to the snowman's center
-            this.y = snowman.y + snowman.size;  // Place it on top of the snowman (or inside it)
+            this.x = snowMan.x + snowMan.size / 2 - this.size / 2; // Align it to the snowman's center
+            this.y = snowMan.y + snowMan.size;  // Place it on top of the snowman (or inside it)
             return;  // Don't let the snowflake continue falling
         }
 

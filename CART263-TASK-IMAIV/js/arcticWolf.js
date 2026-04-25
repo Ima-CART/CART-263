@@ -77,8 +77,8 @@ class ArcticWolf {
         }, 16);  // 60 FPS
     }
 
-    applyNightMode() {
-        if (!isNight) {
+    applyNightMode(isNight) {
+        if (isNight) {
             // Apply night mode styles: dim the wolf, add glow effect
             this.html_element.style.opacity = 0.8;  // Slight transparency to blend with night
             this.html_element.style.borderRadius = "500px"

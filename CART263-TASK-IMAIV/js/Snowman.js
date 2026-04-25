@@ -28,7 +28,18 @@ class SnowMan {
 
     }
 
+    applyNightMode(isNight) {
 
+        if (isNight) {
+            this.html_element.style.filter = "brightness(0.6)";
+            this.html_element.style.opacity = 0.8;
+            this.html_element.style.boxShadow = "0 0 80px rgba(111, 195, 248, 0.65)"; // Soft glow effect
+            this.html_element.style.borderRadius = "500px"
+        } else {
+            this.html_element.style.filter = "brightness(1)";
+            this.html_element.style.opacity = 1;
+        }
+    }
 
 
 

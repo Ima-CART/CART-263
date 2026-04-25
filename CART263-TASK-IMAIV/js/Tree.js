@@ -27,6 +27,19 @@ class Tree {
 
     }
 
+    applyNightMode(isNight) {
+
+        if (isNight) {
+            this.html_element.style.filter = "brightness(0.6)";
+            this.html_element.style.opacity = 0.8;
+
+        } else {
+            this.html_element.style.filter = "brightness(1)";
+            this.html_element.style.opacity = 1;
+        }
+    }
+
+
 
 
 

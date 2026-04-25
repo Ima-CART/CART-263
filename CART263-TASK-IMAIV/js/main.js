@@ -48,7 +48,7 @@ function go() {
     }
 
     //add the snowman
-    snowman = new SnowMan(window.innerWidth / 2, 500, 200)
+    snowMan = new SnowMan(window.innerWidth / 2, 500, 200)
 
     //add tree
     for (let i = 0; i < 5; i++) {
@@ -118,6 +118,13 @@ function go() {
         ${sky.skyColor.g},
         ${sky.skyColor.b}
     )`;
+
+        arcticWolf.applyNightMode(isNight);
+        snowMan.applyNightMode(isNight);
+        for (let i = 0; i < tree.length; i++) {
+            tree[i].applyNightMode(isNight); // Apply night mode to each tree
+        }
+
     }
 
 
@@ -176,7 +183,11 @@ function go() {
             isNight = !isNight;
             // Update the background color after toggling isNight
             winterNightMode();
-            arcticWolf.applyNightMode();
+            // arcticWolf.applyNightMode(isNight);
+            // snowMan.applyNightMode(isNight);
+            // for (let i = 0; i < tree.length; i++) {
+            //     tree[i].applyNightMode(isNight); // Apply night mode to each tree
+            // }
         }
     })
 
@@ -185,7 +196,7 @@ function go() {
     window.requestAnimationFrame(animate)
     function animate() {
         for (let i = 0; i < snowFlakes.length; i++) {
-            snowFlakes[i].update(snowman);//pass throught the snowman so that snowflake can interact
+            snowFlakes[i].update(snowMan);//pass throught the snowman so that snowflake can interact
         }
         updateWindDirection();
 
