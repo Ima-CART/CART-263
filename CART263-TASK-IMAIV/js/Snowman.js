@@ -38,6 +38,7 @@ class SnowMan {
         } else {
             this.html_element.style.filter = "brightness(1)";
             this.html_element.style.opacity = 1;
+            this.html_element.style.boxShadow = "none"
         }
     }
 
