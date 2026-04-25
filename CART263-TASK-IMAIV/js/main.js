@@ -77,6 +77,31 @@ function go() {
         document.querySelector("#winter-canvas").appendChild(sky.skyDiv);
 
         // Update sky color based on whether it's day or night
+        // if (isNight) {
+        //     sky.skyColor.r = 3;
+        //     sky.skyColor.g = 31;
+        //     sky.skyColor.b = 77;  // Dark blue for night
+        // } else {
+        //     sky.skyColor.r = 154;
+        //     sky.skyColor.g = 215;
+        //     sky.skyColor.b = 255;  // Light blue for day
+        // }
+        // if (isNight = true) {
+        //     sky.skyColor.r = 3,
+        //         sky.skyColor.g = 31,
+        //         sky.skyColor.b = 77
+
+        // }
+        //the night mode needs to be called here in order to updata and change the sky
+        winterNightMode()
+    }
+
+    createBackgroundForWinter()
+
+    /**Create an new function to apply Nightmode */
+    function winterNightMode() {
+
+        //         // Update sky color based on whether it's day or night
         if (isNight) {
             sky.skyColor.r = 3;
             sky.skyColor.g = 31;
@@ -86,15 +111,16 @@ function go() {
             sky.skyColor.g = 215;
             sky.skyColor.b = 255;  // Light blue for day
         }
-        // if (isNight = true) {
-        //     sky.skyColor.r = 3,
-        //         sky.skyColor.g = 31,
-        //         sky.skyColor.b = 77
 
-        // }
+        //Need to apply the sky so it changes
+        sky.skyDiv.style.background = `rgb(
+        ${sky.skyColor.r},
+        ${sky.skyColor.g},
+        ${sky.skyColor.b}
+    )`;
     }
 
-    createBackgroundForWinter()
+
 
     //add mouse event listener
     window.addEventListener("mousemove", moveWind)
@@ -149,7 +175,7 @@ function go() {
             // Toggle isNight
             isNight = !isNight;
             // Update the background color after toggling isNight
-            createBackgroundForWinter();
+            winterNightMode();
             arcticWolf.applyNightMode();
         }
     })
