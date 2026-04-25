@@ -48,12 +48,14 @@ class SnowFlakes {
             for (let i = 0; i < 10; i++) {
                 let randomX = burstX + (Math.random() - 0.5) * 50;  // Spread out randomly
                 let randomY = burstY + (Math.random() - 0.5) * 50;  // Spread out randomly
-                let newSnowflake = new SnowFlakes(randomX, randomY, Math.random() * 10 + 5, Math.random() * 3 + 2, 0);
-                snowFlakes.push(newSnowflake);
+                let newSnowflakes = new SnowFlakes(randomX, randomY, Math.random() * 10 + 5, Math.random() * 3 + 2, 0);
+                snowFlakes.push(newSnowflakes);
             }
 
+
+
             // Remove the clicked snowflake from the array
-            snowFlakes = snowFlakes.filter(snowflake => snowflake !== this);
+            snowFlakes = snowFlakes.filter(snowflakes => snowflakes !== snowSelf);
 
             // Optionally, you can also hide or remove the clicked snowflake element from the DOM
             snowSelf.html_element.style.display = "none";
@@ -63,6 +65,18 @@ class SnowFlakes {
         }
     }
 
+    // Apply night mode effect
+    applyNightMode(isNight) {
+        if (isNight) {
+            // Apply darker or glowing effect when night
+            this.html_element.style.filter = "brightness(0.5)";
+            this.html_element.style.boxShadow = "0 0 30px 5px rgba(254, 255, 255, 0.61)";
+            // this.html_element.style.borderRadius = this.size
+        } else {
+            // Reset the effect to normal brightness during the day
+            this.html_element.style.filter = "brightness(1)";
+        }
+    }
 
     handleKeyDownInSnow(key) {
 

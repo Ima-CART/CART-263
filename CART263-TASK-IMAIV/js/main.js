@@ -125,6 +125,9 @@ function go() {
             tree[i].applyNightMode(isNight); // Apply night mode to each tree
         }
 
+        for (let i = 0; i < snowFlakes.length; i++) {
+            snowFlakes[i].applyNightMode(isNight);
+        }
     }
 
 
@@ -156,6 +159,7 @@ function go() {
         let newSnowFlakes = new SnowFlakes(Math.random() * window.innerWidth, 0, 0, 0, 0);
         // let newSnowFlakes = new SnowFlakes(e.clientX, e.clientY)
         snowFlakes.push(newSnowFlakes)
+        newSnowFlakes.applyNightMode(isNight)
 
     }
 
